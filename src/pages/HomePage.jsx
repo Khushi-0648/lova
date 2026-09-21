@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { 
   Heart, 
@@ -14,7 +14,9 @@ import {
   FileCheck, 
   Award, 
   Lock, 
-  HelpCircle 
+  HelpCircle,
+  Sparkles,
+  Package
 } from 'lucide-react';
 import ImpactStats from '../components/ImpactStats';
 import DonationWidget from '../components/DonationWidget';
@@ -26,6 +28,42 @@ import paypalWordmarkSvg from '../assets/paypal-wordmark.svg';
 import { TESTIMONIALS_DATA } from '../data/testimonialsData';
 
 export default function HomePage() {
+  const [monthlyTier, setMonthlyTier] = useState(35);
+
+  const monthlyTierData = {
+    19: {
+      dailyCost: '$0.63 / day',
+      meals: '228 Hot Meals / Year',
+      shelterNights: '12 Emergency Shelter Nights',
+      counseling: '2 Trauma Support Check-ins',
+      description: 'Provides regular sustenance and warm weather-proof gear for homeless veterans living on the streets.',
+      badge: 'Hero Supporter'
+    },
+    35: {
+      dailyCost: '$1.16 / day',
+      meals: '420 Hot Meals / Year',
+      shelterNights: '24 Supervised Shelter Nights',
+      counseling: '6 Clinical PTSD Counseling Sessions',
+      description: 'Guarantees consistent shelter lodging and psychological care to help a veteran transition off the streets.',
+      badge: 'Most Popular'
+    },
+    50: {
+      dailyCost: '$1.66 / day',
+      meals: '600 Hot Meals / Year',
+      shelterNights: '36 Supervised Shelter Nights',
+      counseling: '12 One-on-One Therapy Sessions',
+      description: 'Finances comprehensive transitional rehabilitation, medical transit, and job placement assistance.',
+      badge: 'Guardian Hero'
+    },
+    100: {
+      dailyCost: '$3.33 / day',
+      meals: '1,200 Hot Meals / Year',
+      shelterNights: '72 Safe Shelter Nights',
+      counseling: 'Full Year Adaptive Home & PTSD Care',
+      description: 'Directly funds permanent adaptive smart-home fixtures and wheelchair accessibility ramps for wounded warriors.',
+      badge: 'Champion Partner'
+    }
+  };
 
   return (
     <div className="space-y-20 pb-20">
@@ -337,6 +375,109 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* Section: Interactive Monthly Giving Impact Calculator */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="bg-gradient-to-br from-brand-navy-950 via-brand-navy-900 to-slate-900 rounded-3xl p-6 sm:p-10 lg:p-14 text-white shadow-2xl border border-slate-800 space-y-8 sm:space-y-10">
+          
+          <div className="text-center max-w-2xl mx-auto space-y-2">
+            <span className="text-brand-gold-400 font-bold uppercase tracking-wider text-xs flex items-center justify-center gap-1.5">
+              <Sparkles className="w-4 h-4 text-brand-gold-400" /> Interactive Giving Simulator
+            </span>
+            <h2 className="text-2xl sm:text-4xl font-display font-black text-white">
+              See the Power of Monthly Giving
+            </h2>
+            <p className="text-slate-300 text-xs sm:text-base leading-relaxed">
+              Pocket change a day can end veteran homelessness. Select a monthly pledge below to see your annual life-saving impact.
+            </p>
+          </div>
+
+          {/* Tier Buttons */}
+          <div className="flex flex-wrap items-center justify-center gap-2.5 sm:gap-4 max-w-2xl mx-auto">
+            {[19, 35, 50, 100].map((amt) => (
+              <button
+                key={amt}
+                type="button"
+                onClick={() => setMonthlyTier(amt)}
+                className={`flex-1 min-w-[75px] sm:min-w-[120px] py-3 sm:py-4 px-3 sm:px-6 rounded-2xl font-display font-black text-base sm:text-xl transition-all flex flex-col items-center justify-center border-2 ${
+                  monthlyTier === amt
+                    ? 'bg-brand-red-600 border-brand-red-500 text-white shadow-lg shadow-brand-red-600/30 scale-105'
+                    : 'bg-slate-800/80 border-slate-700 text-slate-300 hover:bg-slate-800 hover:text-white'
+                }`}
+              >
+                <span>${amt}</span>
+                <span className="text-[10px] sm:text-xs font-semibold opacity-80 mt-0.5">/month</span>
+              </button>
+            ))}
+          </div>
+
+          {/* Dynamic Impact Display Card */}
+          <div className="bg-slate-800/90 rounded-2xl p-6 sm:p-8 border border-slate-700/80 max-w-4xl mx-auto shadow-inner">
+            <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pb-6 border-b border-slate-700/80">
+              <div>
+                <span className="px-3 py-1 rounded-full text-xs font-bold bg-brand-gold-500/20 text-brand-gold-300 border border-brand-gold-500/30">
+                  {monthlyTierData[monthlyTier].badge}
+                </span>
+                <h3 className="text-xl sm:text-2xl font-display font-black text-white mt-2">
+                  Pledge ${monthlyTier}/Month <span className="text-slate-400 font-normal text-sm">({monthlyTierData[monthlyTier].dailyCost})</span>
+                </h3>
+              </div>
+              <Link
+                to="/donate"
+                state={{ amount: monthlyTier, frequency: 'monthly' }}
+                className="w-full sm:w-auto px-6 py-3.5 rounded-xl font-display font-black text-xs uppercase tracking-wider text-brand-navy-950 bg-brand-gold-400 hover:bg-brand-gold-300 shadow-xl transition-all flex items-center justify-center gap-2 text-center whitespace-nowrap active:scale-95"
+              >
+                <Heart className="w-4 h-4 fill-current text-brand-navy-950" />
+                <span>Start ${monthlyTier}/Mo Commitment</span>
+              </Link>
+            </div>
+
+            <p className="text-slate-300 text-xs sm:text-sm py-4 leading-relaxed italic">
+              "{monthlyTierData[monthlyTier].description}"
+            </p>
+
+            {/* Metrics Grid */}
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2">
+              <div className="p-4 rounded-xl bg-slate-900/60 border border-slate-700/50 space-y-1">
+                <span className="text-xs text-slate-400 font-semibold block">Sustained Nutrition</span>
+                <span className="text-lg sm:text-xl font-display font-black text-white block">
+                  {monthlyTierData[monthlyTier].meals}
+                </span>
+                <span className="text-[11px] text-emerald-400">Nutritious meals delivered</span>
+              </div>
+
+              <div className="p-4 rounded-xl bg-slate-900/60 border border-slate-700/50 space-y-1">
+                <span className="text-xs text-slate-400 font-semibold block">Emergency Lodging</span>
+                <span className="text-lg sm:text-xl font-display font-black text-white block">
+                  {monthlyTierData[monthlyTier].shelterNights}
+                </span>
+                <span className="text-[11px] text-blue-400">Safe, warm bed nights</span>
+              </div>
+
+              <div className="p-4 rounded-xl bg-slate-900/60 border border-slate-700/50 space-y-1">
+                <span className="text-xs text-slate-400 font-semibold block">Healing & Therapy</span>
+                <span className="text-lg sm:text-xl font-display font-black text-white block">
+                  {monthlyTierData[monthlyTier].counseling}
+                </span>
+                <span className="text-[11px] text-brand-gold-400">Professional trauma care</span>
+              </div>
+            </div>
+          </div>
+
+          <div className="flex flex-wrap items-center justify-center gap-4 text-xs text-slate-400 text-center">
+            <span className="flex items-center gap-1.5">
+              <CheckCircle2 className="w-4 h-4 text-emerald-400" /> Cancel or modify your pledge anytime
+            </span>
+            <span className="flex items-center gap-1.5">
+              <CheckCircle2 className="w-4 h-4 text-emerald-400" /> Annual cumulative IRS tax statement
+            </span>
+            <span className="flex items-center gap-1.5">
+              <CheckCircle2 className="w-4 h-4 text-emerald-400" /> Exclusive quarterly impact newsletter
+            </span>
+          </div>
+
+        </div>
+      </section>
+
       {/* Section: Multiple Ways to Support */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="bg-slate-900 rounded-3xl p-6 sm:p-10 lg:p-14 text-white shadow-2xl space-y-10">
@@ -591,6 +732,203 @@ export default function HomePage() {
               </div>
             </div>
           ))}
+        </div>
+      </section>
+
+      {/* Section: Tangible Care Package Sponsorship (Gift Catalog) */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="bg-white rounded-3xl p-6 sm:p-10 lg:p-12 border border-slate-200 shadow-xl space-y-10">
+          
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
+            <div>
+              <span className="text-brand-red-600 font-bold uppercase tracking-wider text-xs flex items-center gap-1.5">
+                <Package className="w-4 h-4 text-brand-red-600" /> Direct Aid Catalog
+              </span>
+              <h2 className="text-2xl sm:text-4xl font-display font-black text-brand-navy-950 mt-1">
+                Sponsor an Emergency Care Package
+              </h2>
+              <p className="text-slate-600 text-xs sm:text-sm mt-1 max-w-2xl">
+                Choose a tangible survival kit to be packed by our volunteers and hand-delivered to a veteran experiencing crisis or homelessness.
+              </p>
+            </div>
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-red-50 border border-red-200 text-brand-red-700 text-xs font-bold shrink-0 self-start md:self-auto">
+              <span className="w-2 h-2 rounded-full bg-brand-red-600 animate-ping" />
+              <span>Winter Urgent Need: 38 Packages Needed</span>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            
+            {/* Package 1 */}
+            <div className="bg-slate-50 rounded-2xl p-5 border border-slate-200 hover:border-brand-red-500/40 hover:bg-white hover:shadow-xl transition-all flex flex-col justify-between group">
+              <div className="space-y-3">
+                <div className="flex items-center justify-between">
+                  <span className="text-2xl font-display font-black text-brand-navy-950">$35</span>
+                  <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-amber-100 text-amber-900 uppercase">
+                    Survival
+                  </span>
+                </div>
+                <h3 className="font-display font-bold text-base text-brand-navy-950">
+                  Winter Warmth & Weather Kit
+                </h3>
+                <p className="text-xs text-slate-600 leading-relaxed">
+                  Heavy-duty subzero thermal socks, polar fleece beanie, windproof combat gloves, and thermal foil survival blanket.
+                </p>
+                <div className="space-y-1.5 pt-2 border-t border-slate-200/80 text-[11px] text-slate-600">
+                  <div className="flex items-center gap-1.5">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
+                    <span>Subzero Thermal Fleece Socks (3 Pairs)</span>
+                  </div>
+                  <div className="flex items-center gap-1.5">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
+                    <span>Insulated Mylar Survival Blanket</span>
+                  </div>
+                  <div className="flex items-center gap-1.5">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
+                    <span>Water-Resistant Combat Beanie</span>
+                  </div>
+                </div>
+              </div>
+              <div className="pt-5 mt-5 border-t border-slate-200">
+                <Link
+                  to="/donate"
+                  state={{ amount: 35 }}
+                  className="w-full py-2.5 rounded-xl font-display font-bold text-xs uppercase tracking-wider text-brand-navy-950 bg-white border border-slate-300 hover:bg-brand-red-600 hover:text-white hover:border-brand-red-600 shadow-sm transition-all flex items-center justify-center gap-2 group-hover:bg-brand-red-600 group-hover:text-white"
+                >
+                  <span>Sponsor for $35</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </Link>
+              </div>
+            </div>
+
+            {/* Package 2 */}
+            <div className="bg-slate-50 rounded-2xl p-5 border border-slate-200 hover:border-brand-red-500/40 hover:bg-white hover:shadow-xl transition-all flex flex-col justify-between group">
+              <div className="space-y-3">
+                <div className="flex items-center justify-between">
+                  <span className="text-2xl font-display font-black text-brand-navy-950">$65</span>
+                  <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-red-100 text-brand-red-800 uppercase">
+                    Nutrition
+                  </span>
+                </div>
+                <h3 className="font-display font-bold text-base text-brand-navy-950">
+                  10-Day Emergency Nutrition Pack
+                </h3>
+                <p className="text-xs text-slate-600 leading-relaxed">
+                  Pre-packed carton of ready-to-eat protein meals, electrolyte hydration packets, healthy dried fruits, and high-calorie rations.
+                </p>
+                <div className="space-y-1.5 pt-2 border-t border-slate-200/80 text-[11px] text-slate-600">
+                  <div className="flex items-center gap-1.5">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
+                    <span>20 Shelf-Stable Protein Meals</span>
+                  </div>
+                  <div className="flex items-center gap-1.5">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
+                    <span>Vitamin & Electrolyte Hydration Packets</span>
+                  </div>
+                  <div className="flex items-center gap-1.5">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
+                    <span>Multi-Day Clean Drinking Water</span>
+                  </div>
+                </div>
+              </div>
+              <div className="pt-5 mt-5 border-t border-slate-200">
+                <Link
+                  to="/donate"
+                  state={{ amount: 65 }}
+                  className="w-full py-2.5 rounded-xl font-display font-bold text-xs uppercase tracking-wider text-brand-navy-950 bg-white border border-slate-300 hover:bg-brand-red-600 hover:text-white hover:border-brand-red-600 shadow-sm transition-all flex items-center justify-center gap-2 group-hover:bg-brand-red-600 group-hover:text-white"
+                >
+                  <span>Sponsor for $65</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </Link>
+              </div>
+            </div>
+
+            {/* Package 3 */}
+            <div className="bg-slate-50 rounded-2xl p-5 border border-slate-200 hover:border-brand-red-500/40 hover:bg-white hover:shadow-xl transition-all flex flex-col justify-between group">
+              <div className="space-y-3">
+                <div className="flex items-center justify-between">
+                  <span className="text-2xl font-display font-black text-brand-navy-950">$85</span>
+                  <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-blue-100 text-blue-900 uppercase">
+                    Medical
+                  </span>
+                </div>
+                <h3 className="font-display font-bold text-base text-brand-navy-950">
+                  Trauma First-Aid & Foot Care Kit
+                </h3>
+                <p className="text-xs text-slate-600 leading-relaxed">
+                  Clinical wound dressings, antiseptic spray, medicated foot powders, burn creams, and blister care for rough terrain survival.
+                </p>
+                <div className="space-y-1.5 pt-2 border-t border-slate-200/80 text-[11px] text-slate-600">
+                  <div className="flex items-center gap-1.5">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
+                    <span>Medical Combat Wound Dressings</span>
+                  </div>
+                  <div className="flex items-center gap-1.5">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
+                    <span>Antiseptic Ointments & Blister Relief</span>
+                  </div>
+                  <div className="flex items-center gap-1.5">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
+                    <span>Foot Care & Hygiene Disinfectant</span>
+                  </div>
+                </div>
+              </div>
+              <div className="pt-5 mt-5 border-t border-slate-200">
+                <Link
+                  to="/donate"
+                  state={{ amount: 85 }}
+                  className="w-full py-2.5 rounded-xl font-display font-bold text-xs uppercase tracking-wider text-brand-navy-950 bg-white border border-slate-300 hover:bg-brand-red-600 hover:text-white hover:border-brand-red-600 shadow-sm transition-all flex items-center justify-center gap-2 group-hover:bg-brand-red-600 group-hover:text-white"
+                >
+                  <span>Sponsor for $85</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </Link>
+              </div>
+            </div>
+
+            {/* Package 4 */}
+            <div className="bg-slate-50 rounded-2xl p-5 border border-slate-200 hover:border-brand-red-500/40 hover:bg-white hover:shadow-xl transition-all flex flex-col justify-between group">
+              <div className="space-y-3">
+                <div className="flex items-center justify-between">
+                  <span className="text-2xl font-display font-black text-brand-navy-950">$135</span>
+                  <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-emerald-100 text-emerald-900 uppercase">
+                    Job Rebound
+                  </span>
+                </div>
+                <h3 className="font-display font-bold text-base text-brand-navy-950">
+                  Job Interview & Reintegration Suit
+                </h3>
+                <p className="text-xs text-slate-600 leading-relaxed">
+                  Clean dress shirt, interview slacks, grooming haircut voucher, and local public transit fare pass to attend employment interviews.
+                </p>
+                <div className="space-y-1.5 pt-2 border-t border-slate-200/80 text-[11px] text-slate-600">
+                  <div className="flex items-center gap-1.5">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
+                    <span>Interview Slacks & Button-down Shirt</span>
+                  </div>
+                  <div className="flex items-center gap-1.5">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
+                    <span>Haircut & Barber Grooming Voucher</span>
+                  </div>
+                  <div className="flex items-center gap-1.5">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
+                    <span>30-Day Transit Pass for Job Fairs</span>
+                  </div>
+                </div>
+              </div>
+              <div className="pt-5 mt-5 border-t border-slate-200">
+                <Link
+                  to="/donate"
+                  state={{ amount: 135 }}
+                  className="w-full py-2.5 rounded-xl font-display font-bold text-xs uppercase tracking-wider text-brand-navy-950 bg-white border border-slate-300 hover:bg-brand-red-600 hover:text-white hover:border-brand-red-600 shadow-sm transition-all flex items-center justify-center gap-2 group-hover:bg-brand-red-600 group-hover:text-white"
+                >
+                  <span>Sponsor for $135</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </Link>
+              </div>
+            </div>
+
+          </div>
+
         </div>
       </section>
 
