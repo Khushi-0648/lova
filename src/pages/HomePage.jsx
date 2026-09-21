@@ -68,17 +68,17 @@ export default function HomePage() {
   return (
     <div className="w-full overflow-hidden">
       
-      {/* 0. Hero Section (BLUE / PATRIOTIC NAVY) */}
-      <section className="relative w-full pt-8 pb-14 sm:pt-12 sm:pb-20 lg:pt-16 lg:pb-32 overflow-hidden border-b border-brand-navy-900 bg-slate-900 text-white">
+      {/* 0. Hero Section */}
+      <section className="relative w-full pt-8 pb-14 sm:pt-12 sm:pb-20 lg:pt-16 lg:pb-32 overflow-hidden border-b border-slate-200 text-white">
         
-        {/* Background Image Related to Donation - Vivid, Fully Visible */}
+        {/* Background Image Related to Donation - 100% natural photo colors with zero blue effect */}
         <div 
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{ backgroundImage: `url(${heroDonationBg})` }}
         />
 
-        {/* Subtle, soft overlay so the image is 100% visible while preserving text contrast */}
-        <div className="absolute inset-0 bg-gradient-to-r from-black/45 via-black/15 to-black/35 pointer-events-none" />
+        {/* Minimal neutral overlay (zero blue tint) so original colors shine */}
+        <div className="absolute inset-0 bg-gradient-to-r from-black/35 via-transparent to-black/20 pointer-events-none" />
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
@@ -1058,8 +1058,8 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 12. Urgent Action Final Banner (BLUE) */}
-      <section className="w-full bg-gradient-to-r from-brand-navy-950 via-slate-900 to-brand-navy-950 py-16 sm:py-24 text-white">
+      {/* 12. Urgent Action Final Banner */}
+      <section className="w-full bg-slate-900 py-16 sm:py-24 text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="relative rounded-3xl p-6 sm:p-10 lg:p-12 text-white shadow-2xl flex flex-col lg:flex-row items-center justify-between gap-6 sm:gap-8 border border-white/20 overflow-hidden">
             {/* Background Image */}
@@ -1067,8 +1067,8 @@ export default function HomePage() {
               className="absolute inset-0 bg-cover bg-center bg-no-repeat"
               style={{ backgroundImage: `url(${heroDonationBg})` }}
             />
-            {/* Gradient Overlay for high text contrast */}
-            <div className="absolute inset-0 bg-gradient-to-r from-brand-red-700/95 via-brand-red-800/90 to-brand-navy-950/95 pointer-events-none" />
+            {/* Pure Red & Charcoal Overlay - Zero Blue */}
+            <div className="absolute inset-0 bg-gradient-to-r from-brand-red-700/90 via-brand-red-800/85 to-black/85 pointer-events-none" />
 
             <div className="relative z-10 space-y-2 text-center lg:text-left">
               <h3 className="text-xl sm:text-3xl font-display font-black text-white drop-shadow-sm">
