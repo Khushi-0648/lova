@@ -270,9 +270,9 @@ export default function HomePage() {
       <VideoExperience />
 
       {/* 3. Tangible Impact by Donation Amount (WHITE) */}
-      <section className="w-full bg-slate-50 text-slate-800 py-12 sm:py-24 border-b border-slate-200">
+      <section className="w-full bg-slate-50 text-slate-800 py-16 sm:py-24 border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-14 space-y-2 sm:space-y-3">
+          <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-14 space-y-3">
             <span className="text-brand-red-600 font-bold uppercase tracking-wider text-xs flex items-center justify-center gap-1.5">
               <Heart className="w-4 h-4 fill-current" /> Transparent Impact
             </span>
@@ -284,28 +284,28 @@ export default function HomePage() {
             </p>
           </div>
 
-          <div className="flex overflow-x-auto pb-4 pt-1 snap-x snap-mandatory gap-3.5 sm:grid sm:grid-cols-2 lg:grid-cols-4 sm:gap-6 -mx-4 px-4 sm:mx-0 sm:px-0">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 pt-3">
             {/* Tier $25 */}
-            <div className="min-w-[260px] max-w-[280px] sm:min-w-0 sm:max-w-none snap-center shrink-0 sm:shrink bg-white rounded-2xl p-5 sm:p-6 border border-slate-200 shadow-md hover:shadow-xl hover:border-brand-red-500/30 transition-all flex flex-col justify-between group">
-              <div className="space-y-3 sm:space-y-4">
+            <div className="bg-white rounded-2xl p-6 border border-slate-200 shadow-md hover:shadow-xl hover:border-brand-red-500/30 transition-all flex flex-col justify-between group">
+              <div className="space-y-4">
                 <div className="flex items-center justify-between">
-                  <span className="text-2xl sm:text-3xl font-display font-black text-brand-navy-950">$25</span>
-                  <span className="px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-full text-[11px] sm:text-xs font-bold bg-amber-100 text-amber-800">
+                  <span className="text-3xl font-display font-black text-brand-navy-950">$25</span>
+                  <span className="px-3 py-1 rounded-full text-xs font-bold bg-amber-100 text-amber-800">
                     Essential Relief
                   </span>
                 </div>
-                <h3 className="font-display font-bold text-base sm:text-lg text-brand-navy-950">
+                <h3 className="font-display font-bold text-lg text-brand-navy-950">
                   Hot Meals & Hygiene Kits
                 </h3>
                 <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
                   Provides 7 nutritious hot meals, clean socks, and an essential hygiene care package for a homeless veteran.
                 </p>
               </div>
-              <div className="pt-4 sm:pt-6 mt-4 sm:mt-6 border-t border-slate-100">
+              <div className="pt-6 mt-6 border-t border-slate-100">
                 <Link
                   to="/donate"
                   state={{ amount: 25 }}
-                  className="w-full py-2.5 sm:py-3 rounded-xl font-display font-bold text-xs uppercase tracking-wider text-brand-navy-950 bg-slate-100 hover:bg-brand-red-600 hover:text-white transition-all flex items-center justify-center gap-2 group-hover:bg-brand-red-600 group-hover:text-white"
+                  className="w-full py-3 rounded-xl font-display font-bold text-xs uppercase tracking-wider text-brand-navy-950 bg-slate-100 hover:bg-brand-red-600 hover:text-white transition-all flex items-center justify-center gap-2 group-hover:bg-brand-red-600 group-hover:text-white"
                 >
                   <span>Donate $25</span>
                   <ArrowRight className="w-3.5 h-3.5" />
@@ -314,29 +314,29 @@ export default function HomePage() {
             </div>
 
             {/* Tier $50 */}
-            <div className="min-w-[260px] max-w-[280px] sm:min-w-0 sm:max-w-none snap-center shrink-0 sm:shrink bg-white rounded-2xl p-5 sm:p-6 border-2 border-brand-red-600/40 shadow-md hover:shadow-xl hover:border-brand-red-600 transition-all flex flex-col justify-between group relative">
-              <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-0.5 rounded-full bg-brand-red-600 text-white text-[10px] font-black uppercase tracking-wider shadow">
+            <div className="bg-white rounded-2xl p-6 border-2 border-brand-red-600 shadow-md hover:shadow-xl transition-all flex flex-col justify-between group relative">
+              <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 px-3.5 py-0.5 rounded-full bg-brand-red-600 text-white text-[10px] font-black uppercase tracking-wider shadow-md whitespace-nowrap">
                 Most Popular
               </div>
-              <div className="space-y-3 sm:space-y-4">
+              <div className="space-y-4">
                 <div className="flex items-center justify-between">
-                  <span className="text-2xl sm:text-3xl font-display font-black text-brand-red-600">$50</span>
-                  <span className="px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-full text-[11px] sm:text-xs font-bold bg-red-100 text-brand-red-700">
+                  <span className="text-3xl font-display font-black text-brand-red-600">$50</span>
+                  <span className="px-3 py-1 rounded-full text-xs font-bold bg-red-100 text-brand-red-700">
                     Emergency Bed
                   </span>
                 </div>
-                <h3 className="font-display font-bold text-base sm:text-lg text-brand-navy-950">
+                <h3 className="font-display font-bold text-lg text-brand-navy-950">
                   Safe Overnight Lodging
                 </h3>
                 <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
                   Funds 2 nights in warm, supervised emergency transitional shelter with hot showers and secure personal storage.
                 </p>
               </div>
-              <div className="pt-4 sm:pt-6 mt-4 sm:mt-6 border-t border-slate-100">
+              <div className="pt-6 mt-6 border-t border-slate-100">
                 <Link
                   to="/donate"
                   state={{ amount: 50 }}
-                  className="w-full py-2.5 sm:py-3 rounded-xl font-display font-black text-xs uppercase tracking-wider text-white bg-brand-red-600 hover:bg-brand-red-700 transition-all flex items-center justify-center gap-2 shadow-md hover:shadow-glow-red"
+                  className="w-full py-3 rounded-xl font-display font-black text-xs uppercase tracking-wider text-white bg-brand-red-600 hover:bg-brand-red-700 transition-all flex items-center justify-center gap-2 shadow-md hover:shadow-glow-red"
                 >
                   <span>Donate $50</span>
                   <ArrowRight className="w-3.5 h-3.5" />
@@ -345,26 +345,26 @@ export default function HomePage() {
             </div>
 
             {/* Tier $100 */}
-            <div className="min-w-[260px] max-w-[280px] sm:min-w-0 sm:max-w-none snap-center shrink-0 sm:shrink bg-white rounded-2xl p-5 sm:p-6 border border-slate-200 shadow-md hover:shadow-xl hover:border-brand-red-500/30 transition-all flex flex-col justify-between group">
-              <div className="space-y-3 sm:space-y-4">
+            <div className="bg-white rounded-2xl p-6 border border-slate-200 shadow-md hover:shadow-xl hover:border-brand-red-500/30 transition-all flex flex-col justify-between group">
+              <div className="space-y-4">
                 <div className="flex items-center justify-between">
-                  <span className="text-2xl sm:text-3xl font-display font-black text-brand-navy-950">$100</span>
-                  <span className="px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-full text-[11px] sm:text-xs font-bold bg-blue-100 text-blue-800">
+                  <span className="text-3xl font-display font-black text-brand-navy-950">$100</span>
+                  <span className="px-3 py-1 rounded-full text-xs font-bold bg-blue-100 text-blue-800">
                     Mental Health
                   </span>
                 </div>
-                <h3 className="font-display font-bold text-base sm:text-lg text-brand-navy-950">
+                <h3 className="font-display font-bold text-lg text-brand-navy-950">
                   PTSD Trauma Counseling
                 </h3>
                 <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
                   Funds a clinical one-on-one session with a licensed trauma specialist dedicated to combat veteran rehabilitation.
                 </p>
               </div>
-              <div className="pt-4 sm:pt-6 mt-4 sm:mt-6 border-t border-slate-100">
+              <div className="pt-6 mt-6 border-t border-slate-100">
                 <Link
                   to="/donate"
                   state={{ amount: 100 }}
-                  className="w-full py-2.5 sm:py-3 rounded-xl font-display font-bold text-xs uppercase tracking-wider text-brand-navy-950 bg-slate-100 hover:bg-brand-red-600 hover:text-white transition-all flex items-center justify-center gap-2 group-hover:bg-brand-red-600 group-hover:text-white"
+                  className="w-full py-3 rounded-xl font-display font-bold text-xs uppercase tracking-wider text-brand-navy-950 bg-slate-100 hover:bg-brand-red-600 hover:text-white transition-all flex items-center justify-center gap-2 group-hover:bg-brand-red-600 group-hover:text-white"
                 >
                   <span>Donate $100</span>
                   <ArrowRight className="w-3.5 h-3.5" />
@@ -373,36 +373,32 @@ export default function HomePage() {
             </div>
 
             {/* Tier $250 */}
-            <div className="min-w-[260px] max-w-[280px] sm:min-w-0 sm:max-w-none snap-center shrink-0 sm:shrink bg-white rounded-2xl p-5 sm:p-6 border border-slate-200 shadow-md hover:shadow-xl hover:border-brand-red-500/30 transition-all flex flex-col justify-between group">
-              <div className="space-y-3 sm:space-y-4">
+            <div className="bg-white rounded-2xl p-6 border border-slate-200 shadow-md hover:shadow-xl hover:border-brand-red-500/30 transition-all flex flex-col justify-between group">
+              <div className="space-y-4">
                 <div className="flex items-center justify-between">
-                  <span className="text-2xl sm:text-3xl font-display font-black text-brand-navy-950">$250</span>
-                  <span className="px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-full text-[11px] sm:text-xs font-bold bg-emerald-100 text-emerald-800">
+                  <span className="text-3xl font-display font-black text-brand-navy-950">$250</span>
+                  <span className="px-3 py-1 rounded-full text-xs font-bold bg-emerald-100 text-emerald-800">
                     Smart Home
                   </span>
                 </div>
-                <h3 className="font-display font-bold text-base sm:text-lg text-brand-navy-950">
+                <h3 className="font-display font-bold text-lg text-brand-navy-950">
                   Adaptive Home Accessibility
                 </h3>
                 <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
                   Directly finances wheelchair ramps, automatic doors, and barrier-free bathroom modifications for amputee veterans.
                 </p>
               </div>
-              <div className="pt-4 sm:pt-6 mt-4 sm:mt-6 border-t border-slate-100">
+              <div className="pt-6 mt-6 border-t border-slate-100">
                 <Link
                   to="/donate"
                   state={{ amount: 250 }}
-                  className="w-full py-2.5 sm:py-3 rounded-xl font-display font-bold text-xs uppercase tracking-wider text-brand-navy-950 bg-slate-100 hover:bg-brand-red-600 hover:text-white transition-all flex items-center justify-center gap-2 group-hover:bg-brand-red-600 group-hover:text-white"
+                  className="w-full py-3 rounded-xl font-display font-bold text-xs uppercase tracking-wider text-brand-navy-950 bg-slate-100 hover:bg-brand-red-600 hover:text-white transition-all flex items-center justify-center gap-2 group-hover:bg-brand-red-600 group-hover:text-white"
                 >
                   <span>Donate $250</span>
                   <ArrowRight className="w-3.5 h-3.5" />
                 </Link>
               </div>
             </div>
-          </div>
-
-          <div className="sm:hidden flex items-center justify-center gap-1.5 text-[11px] text-slate-500 pt-1">
-            <span>← Swipe horizontally to explore all tiers ($25, $50, $100, $250) →</span>
           </div>
         </div>
       </section>
