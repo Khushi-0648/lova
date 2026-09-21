@@ -69,16 +69,16 @@ export default function HomePage() {
     <div className="w-full overflow-hidden">
       
       {/* 0. Hero Section (BLUE / PATRIOTIC NAVY) */}
-      <section className="relative w-full pt-8 pb-14 sm:pt-12 sm:pb-20 lg:pt-16 lg:pb-32 overflow-hidden border-b border-brand-navy-900 bg-brand-navy-950 text-white">
+      <section className="relative w-full pt-8 pb-14 sm:pt-12 sm:pb-20 lg:pt-16 lg:pb-32 overflow-hidden border-b border-brand-navy-900 bg-slate-900 text-white">
         
-        {/* Background Image Related to Donation */}
+        {/* Background Image Related to Donation - Vivid, Fully Visible */}
         <div 
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-40 mix-blend-luminosity"
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{ backgroundImage: `url(${heroDonationBg})` }}
         />
 
-        {/* Navy Gradient Overlay for high contrast */}
-        <div className="absolute inset-0 bg-gradient-to-r from-brand-navy-950 via-brand-navy-950/80 to-brand-navy-900/90 pointer-events-none" />
+        {/* Subtle, soft overlay so the image is 100% visible while preserving text contrast */}
+        <div className="absolute inset-0 bg-gradient-to-r from-black/45 via-black/15 to-black/35 pointer-events-none" />
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
@@ -1061,8 +1061,16 @@ export default function HomePage() {
       {/* 12. Urgent Action Final Banner (BLUE) */}
       <section className="w-full bg-gradient-to-r from-brand-navy-950 via-slate-900 to-brand-navy-950 py-16 sm:py-24 text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-gradient-to-r from-brand-red-600 via-brand-red-700 to-brand-navy-950 rounded-3xl p-6 sm:p-10 lg:p-12 text-white shadow-2xl flex flex-col lg:flex-row items-center justify-between gap-6 sm:gap-8 border border-white/10">
-            <div className="space-y-2 text-center lg:text-left">
+          <div className="relative rounded-3xl p-6 sm:p-10 lg:p-12 text-white shadow-2xl flex flex-col lg:flex-row items-center justify-between gap-6 sm:gap-8 border border-white/20 overflow-hidden">
+            {/* Background Image */}
+            <div 
+              className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+              style={{ backgroundImage: `url(${heroDonationBg})` }}
+            />
+            {/* Gradient Overlay for high text contrast */}
+            <div className="absolute inset-0 bg-gradient-to-r from-brand-red-700/95 via-brand-red-800/90 to-brand-navy-950/95 pointer-events-none" />
+
+            <div className="relative z-10 space-y-2 text-center lg:text-left">
               <h3 className="text-xl sm:text-3xl font-display font-black text-white drop-shadow-sm">
                 Help Purple Heart, Homeless, and Combat Wounded Vets
               </h3>
@@ -1070,7 +1078,7 @@ export default function HomePage() {
                 We accept donations in all 50 U.S. states. Every contribution provides shelter, hot meals, psychological counseling, and independence to our heroes.
               </p>
             </div>
-            <div className="flex flex-row items-center justify-center gap-2.5 sm:gap-4 w-full sm:w-auto shrink-0">
+            <div className="relative z-10 flex flex-row items-center justify-center gap-2.5 sm:gap-4 w-full sm:w-auto shrink-0">
               <Link
                 to="/donate"
                 className="flex-1 sm:flex-initial px-4 sm:px-8 py-3.5 sm:py-4 rounded-xl font-display font-black text-xs uppercase tracking-wider text-brand-navy-950 bg-white hover:bg-slate-100 shadow-xl transition-all flex items-center justify-center gap-1.5 sm:gap-2 text-center whitespace-nowrap active:scale-95"
