@@ -33,8 +33,8 @@ export default function VideoExperience() {
   const [activeVideo, setActiveVideo] = useState(videoStories[0]);
 
   return (
-    <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div className="bg-gradient-to-br from-brand-navy-950 via-slate-900 to-brand-navy-900 rounded-3xl p-4 sm:p-8 lg:p-12 text-white shadow-2xl border border-slate-800 space-y-6 sm:space-y-8">
+    <section className="w-full bg-brand-navy-950 py-16 sm:py-20 border-b border-slate-850 text-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6 sm:space-y-8">
         
         {/* Header */}
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 pb-6 border-b border-slate-800">
