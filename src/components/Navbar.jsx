@@ -8,7 +8,6 @@ export default function Navbar() {
 
   const navLinks = [
     { name: 'Home', path: '/' },
-    { name: 'Programs', path: '/programs' },
     { name: 'About Us', path: '/about' },
     { name: 'Our Impact', path: '/impact' },
     { name: 'FAQ', path: '/faq' },

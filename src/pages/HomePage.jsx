@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Heart, Car, ShieldCheck, ArrowRight, CheckCircle2, Star, Phone, ExternalLink, Check } from 'lucide-react';
+import { Heart, Car, ShieldCheck, CheckCircle2, Star, ExternalLink } from 'lucide-react';
 import ImpactStats from '../components/ImpactStats';
 import DonationWidget from '../components/DonationWidget';
 import VideoExperience from '../components/VideoExperience';
@@ -8,11 +8,9 @@ import carPropertyImg from '../assets/car-property-donation.jpg';
 import heroDonationBg from '../assets/hero-donation-bg.jpg';
 import paypalCardsSvg from '../assets/paypal-cards.svg';
 import paypalWordmarkSvg from '../assets/paypal-wordmark.svg';
-import { CAUSES_DATA } from '../data/causesData';
 import { TESTIMONIALS_DATA } from '../data/testimonialsData';
 
 export default function HomePage() {
-  const featuredCauses = CAUSES_DATA.filter((c) => c.featured).slice(0, 3);
 
   return (
     <div className="space-y-20 pb-20">
@@ -190,104 +188,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Featured Programs Section: Clean cause cards (NO text over image) */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
-          <div>
-            <span className="text-brand-red-600 font-bold uppercase tracking-wider text-xs flex items-center gap-1.5">
-              <Heart className="w-4 h-4 fill-current" /> Active Impact Initiatives
-            </span>
-            <h2 className="text-3xl sm:text-4xl font-display font-black text-brand-navy-950 mt-1">
-              Where Your Support Saves Lives
-            </h2>
-          </div>
-          <Link
-            to="/causes"
-            className="inline-flex items-center gap-2 text-sm font-bold text-brand-navy-900 hover:text-brand-red-600 transition-colors"
-          >
-            <span>Explore all programs</span>
-            <ArrowRight className="w-4 h-4" />
-          </Link>
-        </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {featuredCauses.map((cause) => {
-            const percent = Math.min(100, Math.round((cause.raised / cause.goal) * 100));
-            return (
-              <div
-                key={cause.id}
-                className="bg-white rounded-2xl overflow-hidden shadow-lg border border-slate-200/80 hover:shadow-2xl transition-all duration-300 flex flex-col group"
-              >
-                {/* Pure Clean Image with NO text overlaid */}
-                <div className="h-52 overflow-hidden bg-slate-100">
-                  <img
-                    src={cause.image}
-                    alt={cause.title}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
-                </div>
-
-                {/* Content: Category and timeline placed cleanly in the card body */}
-                <div className="p-6 flex-1 flex flex-col justify-between space-y-4">
-                  <div>
-                    <div className="flex items-center justify-between gap-2 mb-2">
-                      <span className="px-2.5 py-0.5 bg-slate-100 text-brand-navy-950 text-xs font-bold rounded-full">
-                        {cause.category}
-                      </span>
-                      <span className="text-xs font-semibold text-slate-500">
-                        {cause.daysLeft} days left
-                      </span>
-                    </div>
-
-                    <h3 className="font-display font-bold text-xl text-brand-navy-950 group-hover:text-brand-red-600 transition-colors line-clamp-2">
-                      <Link to={`/causes/${cause.slug}`}>{cause.title}</Link>
-                    </h3>
-                    <p className="text-sm text-slate-600 mt-2 line-clamp-2 leading-relaxed">
-                      {cause.tagline}
-                    </p>
-                  </div>
-
-                  {/* Progress Bar */}
-                  <div className="space-y-2 pt-2 border-t border-slate-100">
-                    <div className="flex justify-between text-xs font-bold">
-                      <span className="text-brand-red-600">${cause.raised.toLocaleString()} raised</span>
-                      <span className="text-slate-500">Goal: ${cause.goal.toLocaleString()}</span>
-                    </div>
-                    <div className="w-full h-2.5 bg-slate-100 rounded-full overflow-hidden">
-                      <div
-                        className="h-full bg-gradient-to-r from-brand-red-600 to-brand-gold-500 rounded-full transition-all duration-1000"
-                        style={{ width: `${percent}%` }}
-                      />
-                    </div>
-                    <div className="flex justify-between text-[11px] text-slate-500">
-                      <span>{percent}% Funded</span>
-                      <span>{cause.donorsCount} Backers</span>
-                    </div>
-                  </div>
-
-                  {/* Card Action */}
-                  <div className="pt-2 flex items-center gap-3">
-                    <Link
-                      to={`/causes/${cause.slug}`}
-                      className="flex-1 py-2.5 text-center rounded-xl text-xs font-bold uppercase tracking-wider bg-slate-100 text-brand-navy-950 hover:bg-slate-200 transition-colors"
-                    >
-                      Read Story
-                    </Link>
-                    <Link
-                      to="/donate"
-                      state={{ campaignId: cause.slug }}
-                      className="px-4 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider text-white bg-brand-red-600 hover:bg-brand-red-700 transition-colors flex items-center gap-1.5"
-                    >
-                      <Heart className="w-3.5 h-3.5 fill-current" />
-                      Donate
-                    </Link>
-                  </div>
-                </div>
-              </div>
-            );
-          })}
-        </div>
-      </section>
 
       {/* George Washington Historic Quote Section (from lovoa.org) */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -439,26 +340,26 @@ export default function HomePage() {
 
       {/* Urgent Action Final Banner */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="bg-gradient-to-r from-brand-red-600 via-brand-red-700 to-brand-navy-950 rounded-3xl p-8 sm:p-12 text-white shadow-2xl flex flex-col lg:flex-row items-center justify-between gap-8">
+        <div className="bg-gradient-to-r from-brand-red-600 via-brand-red-700 to-brand-navy-950 rounded-3xl p-6 sm:p-10 lg:p-12 text-white shadow-2xl flex flex-col lg:flex-row items-center justify-between gap-6 sm:gap-8">
           <div className="space-y-2 text-center lg:text-left">
-            <h3 className="text-2xl sm:text-3xl font-display font-black">
+            <h3 className="text-xl sm:text-3xl font-display font-black text-white drop-shadow-sm">
               Help Purple Heart, Homeless, and Combat Wounded Vets
             </h3>
-            <p className="text-red-100 text-sm max-w-2xl leading-relaxed">
+            <p className="text-red-100 text-xs sm:text-sm max-w-2xl leading-relaxed">
               We accept donations in all 50 U.S. states. Every contribution provides shelter, hot meals, psychological counseling, and independence to our heroes.
             </p>
           </div>
-          <div className="flex flex-wrap items-center gap-4 shrink-0">
+          <div className="flex flex-row items-center justify-center gap-2.5 sm:gap-4 w-full sm:w-auto shrink-0">
             <Link
               to="/donate"
-              className="px-8 py-4 rounded-xl font-display font-black text-xs uppercase tracking-wider text-brand-navy-950 bg-white hover:bg-slate-100 shadow-xl transition-all flex items-center gap-2"
+              className="flex-1 sm:flex-initial px-4 sm:px-8 py-3.5 sm:py-4 rounded-xl font-display font-black text-xs uppercase tracking-wider text-brand-navy-950 bg-white hover:bg-slate-100 shadow-xl transition-all flex items-center justify-center gap-1.5 sm:gap-2 text-center whitespace-nowrap active:scale-95"
             >
-              <Heart className="w-4 h-4 fill-current text-brand-red-600" />
+              <Heart className="w-4 h-4 fill-current text-brand-red-600 shrink-0" />
               <span>Donate Now</span>
             </Link>
             <Link
               to="/contact"
-              className="px-6 py-4 rounded-xl font-display font-bold text-xs uppercase tracking-wider text-white border border-white/40 hover:bg-white/10 transition-all"
+              className="flex-1 sm:flex-initial px-4 sm:px-6 py-3.5 sm:py-4 rounded-xl font-display font-bold text-xs uppercase tracking-wider text-white border-2 border-white/70 hover:bg-white/15 hover:border-white transition-all text-center whitespace-nowrap flex items-center justify-center shadow-sm active:scale-95"
             >
               Contact Us
             </Link>
