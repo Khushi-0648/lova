@@ -1,6 +1,21 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Heart, Car, ShieldCheck, CheckCircle2, Star, ExternalLink } from 'lucide-react';
+import { 
+  Heart, 
+  Car, 
+  ShieldCheck, 
+  CheckCircle2, 
+  Star, 
+  ExternalLink, 
+  ArrowRight, 
+  Phone, 
+  Building2, 
+  Gift, 
+  FileCheck, 
+  Award, 
+  Lock, 
+  HelpCircle 
+} from 'lucide-react';
 import ImpactStats from '../components/ImpactStats';
 import DonationWidget from '../components/DonationWidget';
 import VideoExperience from '../components/VideoExperience';
@@ -190,6 +205,247 @@ export default function HomePage() {
 
 
 
+      {/* Section: Tangible Impact by Donation Amount */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-14 space-y-3">
+          <span className="text-brand-red-600 font-bold uppercase tracking-wider text-xs flex items-center justify-center gap-1.5">
+            <Heart className="w-4 h-4 fill-current" /> Transparent Impact
+          </span>
+          <h2 className="text-2xl sm:text-4xl font-display font-black text-brand-navy-950">
+            Where Every Dollar Goes
+          </h2>
+          <p className="text-slate-600 text-xs sm:text-base leading-relaxed">
+            Every contribution directly changes a veteran’s life. See the tangible difference your gift makes today.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {/* Tier $25 */}
+          <div className="bg-white rounded-2xl p-6 border border-slate-200 shadow-lg hover:shadow-xl hover:border-brand-red-500/30 transition-all flex flex-col justify-between group">
+            <div className="space-y-4">
+              <div className="flex items-center justify-between">
+                <span className="text-3xl font-display font-black text-brand-navy-950">$25</span>
+                <span className="px-3 py-1 rounded-full text-xs font-bold bg-amber-100 text-amber-800">
+                  Essential Relief
+                </span>
+              </div>
+              <h3 className="font-display font-bold text-lg text-brand-navy-950">
+                Hot Meals & Hygiene Kits
+              </h3>
+              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                Provides 7 nutritious hot meals, clean socks, and an essential hygiene care package for a homeless veteran.
+              </p>
+            </div>
+            <div className="pt-6 mt-6 border-t border-slate-100">
+              <Link
+                to="/donate"
+                state={{ amount: 25 }}
+                className="w-full py-3 rounded-xl font-display font-bold text-xs uppercase tracking-wider text-brand-navy-950 bg-slate-100 hover:bg-brand-red-600 hover:text-white transition-all flex items-center justify-center gap-2 group-hover:bg-brand-red-600 group-hover:text-white"
+              >
+                <span>Donate $25</span>
+                <ArrowRight className="w-3.5 h-3.5" />
+              </Link>
+            </div>
+          </div>
+
+          {/* Tier $50 */}
+          <div className="bg-white rounded-2xl p-6 border-2 border-brand-red-600/30 shadow-lg hover:shadow-xl hover:border-brand-red-600 transition-all flex flex-col justify-between group relative">
+            <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-0.5 rounded-full bg-brand-red-600 text-white text-[10px] font-black uppercase tracking-wider shadow">
+              Most Popular
+            </div>
+            <div className="space-y-4">
+              <div className="flex items-center justify-between">
+                <span className="text-3xl font-display font-black text-brand-red-600">$50</span>
+                <span className="px-3 py-1 rounded-full text-xs font-bold bg-red-100 text-brand-red-700">
+                  Emergency Bed
+                </span>
+              </div>
+              <h3 className="font-display font-bold text-lg text-brand-navy-950">
+                Safe Overnight Lodging
+              </h3>
+              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                Funds 2 nights in warm, supervised emergency transitional shelter with hot showers and secure personal storage.
+              </p>
+            </div>
+            <div className="pt-6 mt-6 border-t border-slate-100">
+              <Link
+                to="/donate"
+                state={{ amount: 50 }}
+                className="w-full py-3 rounded-xl font-display font-black text-xs uppercase tracking-wider text-white bg-brand-red-600 hover:bg-brand-red-700 transition-all flex items-center justify-center gap-2 shadow-md hover:shadow-glow-red"
+              >
+                <span>Donate $50</span>
+                <ArrowRight className="w-3.5 h-3.5" />
+              </Link>
+            </div>
+          </div>
+
+          {/* Tier $100 */}
+          <div className="bg-white rounded-2xl p-6 border border-slate-200 shadow-lg hover:shadow-xl hover:border-brand-red-500/30 transition-all flex flex-col justify-between group">
+            <div className="space-y-4">
+              <div className="flex items-center justify-between">
+                <span className="text-3xl font-display font-black text-brand-navy-950">$100</span>
+                <span className="px-3 py-1 rounded-full text-xs font-bold bg-blue-100 text-blue-800">
+                  Mental Health
+                </span>
+              </div>
+              <h3 className="font-display font-bold text-lg text-brand-navy-950">
+                PTSD Trauma Counseling
+              </h3>
+              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                Funds a clinical one-on-one session with a licensed trauma specialist dedicated to combat veteran rehabilitation.
+              </p>
+            </div>
+            <div className="pt-6 mt-6 border-t border-slate-100">
+              <Link
+                to="/donate"
+                state={{ amount: 100 }}
+                className="w-full py-3 rounded-xl font-display font-bold text-xs uppercase tracking-wider text-brand-navy-950 bg-slate-100 hover:bg-brand-red-600 hover:text-white transition-all flex items-center justify-center gap-2 group-hover:bg-brand-red-600 group-hover:text-white"
+              >
+                <span>Donate $100</span>
+                <ArrowRight className="w-3.5 h-3.5" />
+              </Link>
+            </div>
+          </div>
+
+          {/* Tier $250 */}
+          <div className="bg-white rounded-2xl p-6 border border-slate-200 shadow-lg hover:shadow-xl hover:border-brand-red-500/30 transition-all flex flex-col justify-between group">
+            <div className="space-y-4">
+              <div className="flex items-center justify-between">
+                <span className="text-3xl font-display font-black text-brand-navy-950">$250</span>
+                <span className="px-3 py-1 rounded-full text-xs font-bold bg-emerald-100 text-emerald-800">
+                  Smart Home
+                </span>
+              </div>
+              <h3 className="font-display font-bold text-lg text-brand-navy-950">
+                Adaptive Home Accessibility
+              </h3>
+              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                Directly finances wheelchair ramps, automatic doors, and barrier-free bathroom modifications for amputee veterans.
+              </p>
+            </div>
+            <div className="pt-6 mt-6 border-t border-slate-100">
+              <Link
+                to="/donate"
+                state={{ amount: 250 }}
+                className="w-full py-3 rounded-xl font-display font-bold text-xs uppercase tracking-wider text-brand-navy-950 bg-slate-100 hover:bg-brand-red-600 hover:text-white transition-all flex items-center justify-center gap-2 group-hover:bg-brand-red-600 group-hover:text-white"
+              >
+                <span>Donate $250</span>
+                <ArrowRight className="w-3.5 h-3.5" />
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Section: Multiple Ways to Support */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="bg-slate-900 rounded-3xl p-6 sm:p-10 lg:p-14 text-white shadow-2xl space-y-10">
+          <div className="text-center max-w-2xl mx-auto space-y-2">
+            <span className="text-brand-gold-400 font-bold uppercase tracking-wider text-xs">
+              Giving Options
+            </span>
+            <h2 className="text-2xl sm:text-4xl font-display font-black text-white">
+              Every Way You Can Help Our Heroes
+            </h2>
+            <p className="text-slate-300 text-xs sm:text-sm">
+              Whether through recurring donations, old vehicles, real estate, or tribute gifts, every contribution provides vital veteran care.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {/* Card 1: Monthly Partner */}
+            <div className="bg-slate-800/80 rounded-2xl p-6 border border-slate-700/80 flex flex-col justify-between hover:bg-slate-800 transition-all group">
+              <div className="space-y-3">
+                <div className="w-12 h-12 rounded-xl bg-brand-red-600/20 text-brand-red-400 flex items-center justify-center">
+                  <Heart className="w-6 h-6 fill-current" />
+                </div>
+                <h3 className="font-display font-bold text-lg text-white">Monthly Hero Partner</h3>
+                <p className="text-xs text-slate-300 leading-relaxed">
+                  Join a community of dedicated monthly donors providing predictable, dependable shelter and meals 365 days a year.
+                </p>
+              </div>
+              <div className="pt-5 mt-5 border-t border-slate-700">
+                <Link
+                  to="/donate"
+                  state={{ frequency: 'monthly' }}
+                  className="inline-flex items-center gap-1.5 text-xs font-bold text-brand-gold-400 hover:text-brand-gold-300 transition-colors"
+                >
+                  <span>Start Monthly Gift</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </Link>
+              </div>
+            </div>
+
+            {/* Card 2: Vehicle & Boat Donation */}
+            <div className="bg-slate-800/80 rounded-2xl p-6 border border-slate-700/80 flex flex-col justify-between hover:bg-slate-800 transition-all group">
+              <div className="space-y-3">
+                <div className="w-12 h-12 rounded-xl bg-brand-gold-500/20 text-brand-gold-400 flex items-center justify-center">
+                  <Car className="w-6 h-6" />
+                </div>
+                <h3 className="font-display font-bold text-lg text-white">Car, Truck & Boat Donation</h3>
+                <p className="text-xs text-slate-300 leading-relaxed">
+                  Running or not, we pick up your unwanted vehicle for free in all 50 states and provide maximum IRS tax deductions.
+                </p>
+              </div>
+              <div className="pt-5 mt-5 border-t border-slate-700">
+                <Link
+                  to="/vehicle-donation"
+                  className="inline-flex items-center gap-1.5 text-xs font-bold text-brand-gold-400 hover:text-brand-gold-300 transition-colors"
+                >
+                  <span>Donate Vehicle</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </Link>
+              </div>
+            </div>
+
+            {/* Card 3: Property & Real Estate */}
+            <div className="bg-slate-800/80 rounded-2xl p-6 border border-slate-700/80 flex flex-col justify-between hover:bg-slate-800 transition-all group">
+              <div className="space-y-3">
+                <div className="w-12 h-12 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center">
+                  <Building2 className="w-6 h-6" />
+                </div>
+                <h3 className="font-display font-bold text-lg text-white">Property & Land Donations</h3>
+                <p className="text-xs text-slate-300 leading-relaxed">
+                  Donate residential, commercial, or undeveloped land to help us build permanent supportive housing for wounded vets.
+                </p>
+              </div>
+              <div className="pt-5 mt-5 border-t border-slate-700">
+                <Link
+                  to="/contact"
+                  className="inline-flex items-center gap-1.5 text-xs font-bold text-brand-gold-400 hover:text-brand-gold-300 transition-colors"
+                >
+                  <span>Inquire About Property</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </Link>
+              </div>
+            </div>
+
+            {/* Card 4: Memorial & Tribute Gifts */}
+            <div className="bg-slate-800/80 rounded-2xl p-6 border border-slate-700/80 flex flex-col justify-between hover:bg-slate-800 transition-all group">
+              <div className="space-y-3">
+                <div className="w-12 h-12 rounded-xl bg-blue-500/20 text-blue-400 flex items-center justify-center">
+                  <Gift className="w-6 h-6" />
+                </div>
+                <h3 className="font-display font-bold text-lg text-white">Honor & Memorial Gifts</h3>
+                <p className="text-xs text-slate-300 leading-relaxed">
+                  Honor a veteran loved one or commemorate a fallen service member with a lasting tribute gift in their name.
+                </p>
+              </div>
+              <div className="pt-5 mt-5 border-t border-slate-700">
+                <Link
+                  to="/donate"
+                  state={{ isTribute: true }}
+                  className="inline-flex items-center gap-1.5 text-xs font-bold text-brand-gold-400 hover:text-brand-gold-300 transition-colors"
+                >
+                  <span>Dedicate a Gift</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* George Washington Historic Quote Section (from lovoa.org) */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="relative rounded-3xl bg-gradient-to-br from-brand-navy-950 via-brand-navy-900 to-slate-900 text-white p-8 sm:p-14 overflow-hidden shadow-2xl border border-slate-800">
@@ -335,6 +591,134 @@ export default function HomePage() {
               </div>
             </div>
           ))}
+        </div>
+      </section>
+
+      {/* Section: Donor Trust & Accountability */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="bg-gradient-to-b from-white to-slate-50 rounded-3xl p-6 sm:p-10 lg:p-12 border border-slate-200 shadow-xl space-y-8">
+          <div className="text-center max-w-2xl mx-auto space-y-2">
+            <span className="text-brand-red-600 font-bold uppercase tracking-wider text-xs flex items-center justify-center gap-1.5">
+              <ShieldCheck className="w-4 h-4 text-brand-red-600" /> Donor Confidence
+            </span>
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-display font-black text-brand-navy-950">
+              Give with Complete Peace of Mind
+            </h2>
+            <p className="text-slate-600 text-xs sm:text-sm">
+              We hold ourselves to the highest standards of financial integrity, donor privacy, and IRS compliance.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="p-5 rounded-2xl bg-white border border-slate-200 shadow-sm flex flex-col items-center text-center space-y-2.5 hover:shadow-md transition-all">
+              <div className="w-12 h-12 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center font-black">
+                <ShieldCheck className="w-6 h-6" />
+              </div>
+              <h4 className="font-display font-bold text-brand-navy-950 text-base">501(c)(3) Recognized</h4>
+              <p className="text-xs text-slate-600 leading-relaxed">
+                Official federal non-profit status. All donations are 100% tax-deductible to the fullest extent permitted by U.S. law.
+              </p>
+            </div>
+
+            <div className="p-5 rounded-2xl bg-white border border-slate-200 shadow-sm flex flex-col items-center text-center space-y-2.5 hover:shadow-md transition-all">
+              <div className="w-12 h-12 rounded-xl bg-blue-100 text-blue-700 flex items-center justify-center font-black">
+                <FileCheck className="w-6 h-6" />
+              </div>
+              <h4 className="font-display font-bold text-brand-navy-950 text-base">Instant Tax Receipt</h4>
+              <p className="text-xs text-slate-600 leading-relaxed">
+                An official IRS-compliant donation receipt with our Tax ID / EIN is automatically emailed to you the moment your gift is processed.
+              </p>
+            </div>
+
+            <div className="p-5 rounded-2xl bg-white border border-slate-200 shadow-sm flex flex-col items-center text-center space-y-2.5 hover:shadow-md transition-all">
+              <div className="w-12 h-12 rounded-xl bg-amber-100 text-amber-800 flex items-center justify-center font-black">
+                <Award className="w-6 h-6" />
+              </div>
+              <h4 className="font-display font-bold text-brand-navy-950 text-base">Direct Mission Allocation</h4>
+              <p className="text-xs text-slate-600 leading-relaxed">
+                Over 85% of program funds go directly to shelter beds, meals, PTSD rehabilitation, and adaptive wounded warrior housing.
+              </p>
+            </div>
+
+            <div className="p-5 rounded-2xl bg-white border border-slate-200 shadow-sm flex flex-col items-center text-center space-y-2.5 hover:shadow-md transition-all">
+              <div className="w-12 h-12 rounded-xl bg-purple-100 text-purple-700 flex items-center justify-center font-black">
+                <Lock className="w-6 h-6" />
+              </div>
+              <h4 className="font-display font-bold text-brand-navy-950 text-base">Bank-Grade Encryption</h4>
+              <p className="text-xs text-slate-600 leading-relaxed">
+                All transactions are processed through 256-bit SSL encrypted, PCI-DSS Level 1 compliant secure gateways including PayPal & Stripe.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Section: Donation FAQs */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="bg-white rounded-3xl p-6 sm:p-10 lg:p-12 border border-slate-200 shadow-xl space-y-8">
+          <div className="text-center max-w-2xl mx-auto space-y-2">
+            <span className="text-brand-red-600 font-bold uppercase tracking-wider text-xs flex items-center justify-center gap-1.5">
+              <HelpCircle className="w-4 h-4" /> Got Questions?
+            </span>
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-display font-black text-brand-navy-950">
+              Frequently Asked Questions About Donating
+            </h2>
+            <p className="text-slate-600 text-xs sm:text-sm">
+              Everything you need to know about supporting League of Veterans of America.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-2">
+            <div className="p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-2">
+              <h4 className="font-display font-bold text-brand-navy-950 text-sm sm:text-base flex items-center gap-2">
+                <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
+                Is my donation 100% tax-deductible?
+              </h4>
+              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed pl-6">
+                Yes. League of Veterans of America INC is an official IRS-recognized 501(c)(3) non-profit organization. Your monetary, vehicle, and property donations qualify for maximum legal tax deduction.
+              </p>
+            </div>
+
+            <div className="p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-2">
+              <h4 className="font-display font-bold text-brand-navy-950 text-sm sm:text-base flex items-center gap-2">
+                <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
+                How will I receive my tax receipt?
+              </h4>
+              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed pl-6">
+                As soon as your donation is processed, an official IRS-compliant receipt with our registered Tax ID / EIN will be sent to your email address instantly.
+              </p>
+            </div>
+
+            <div className="p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-2">
+              <h4 className="font-display font-bold text-brand-navy-950 text-sm sm:text-base flex items-center gap-2">
+                <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
+                Can I dedicate my donation in memory or honor of someone?
+              </h4>
+              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed pl-6">
+                Yes! When giving on our donation page, check the "Dedicate this gift" box to specify the veteran's name and include an honorary tribute note.
+              </p>
+            </div>
+
+            <div className="p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-2">
+              <h4 className="font-display font-bold text-brand-navy-950 text-sm sm:text-base flex items-center gap-2">
+                <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
+                How does vehicle donation pickup work?
+              </h4>
+              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed pl-6">
+                We provide 100% free towing across all 50 U.S. states within 24 to 48 hours. Vehicles are accepted in any condition (running or not running), and you receive a full tax deduction receipt.
+              </p>
+            </div>
+          </div>
+
+          <div className="text-center pt-2">
+            <Link
+              to="/faq"
+              className="inline-flex items-center gap-2 text-xs sm:text-sm font-bold text-brand-red-600 hover:text-brand-red-700 transition-colors"
+            >
+              <span>Have more questions? View our complete FAQ guide</span>
+              <ArrowRight className="w-4 h-4" />
+            </Link>
+          </div>
         </div>
       </section>
 
