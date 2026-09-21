@@ -80,7 +80,7 @@ export default function HomePage() {
                   className="w-full sm:w-auto px-6 py-4 rounded-xl font-display font-bold text-sm uppercase tracking-wider text-brand-navy-950 bg-white hover:bg-slate-50 border border-slate-300 shadow-md transition-all flex items-center justify-center gap-2"
                 >
                   <Car className="w-5 h-5 text-brand-red-600" />
-                  <span>Donate Vehicle (Free Towing)</span>
+                  <span>Donate Vehicle</span>
                 </Link>
               </div>
 
@@ -530,7 +530,7 @@ export default function HomePage() {
                   to="/vehicle-donation"
                   className="w-full sm:w-auto text-center px-7 py-3.5 rounded-xl font-display font-bold text-xs uppercase tracking-wider text-brand-navy-950 bg-brand-gold-500 hover:bg-brand-gold-400 shadow-md transition-all"
                 >
-                  Schedule Free Vehicle Pickup
+                  Schedule Vehicle Pickup
                 </Link>
                 <a
                   href="tel:+15617708708"

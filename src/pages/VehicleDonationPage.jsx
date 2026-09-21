@@ -313,7 +313,7 @@ export default function VehicleDonationPage() {
                   className="w-full py-4 px-6 rounded-xl font-display font-black text-sm uppercase tracking-wider text-brand-navy-950 bg-brand-gold-500 hover:bg-brand-gold-400 shadow-lg transition-all flex items-center justify-center gap-2"
                 >
                   <Car className="w-5 h-5" />
-                  <span>Request Free Vehicle Pickup</span>
+                  <span>Submit Vehicle Donation</span>
                 </button>
               </form>
             )}
