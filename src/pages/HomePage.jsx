@@ -284,7 +284,7 @@ export default function HomePage() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 pt-3">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {/* Tier $25 */}
             <div className="bg-white rounded-2xl p-6 border border-slate-200 shadow-md hover:shadow-xl hover:border-brand-red-500/30 transition-all flex flex-col justify-between group">
               <div className="space-y-4">
@@ -314,13 +314,10 @@ export default function HomePage() {
             </div>
 
             {/* Tier $50 */}
-            <div className="bg-white rounded-2xl p-6 border-2 border-brand-red-600 shadow-md hover:shadow-xl transition-all flex flex-col justify-between group relative">
-              <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 px-3.5 py-0.5 rounded-full bg-brand-red-600 text-white text-[10px] font-black uppercase tracking-wider shadow-md whitespace-nowrap">
-                Most Popular
-              </div>
+            <div className="bg-white rounded-2xl p-6 border border-slate-200 shadow-md hover:shadow-xl hover:border-brand-red-500/30 transition-all flex flex-col justify-between group">
               <div className="space-y-4">
                 <div className="flex items-center justify-between">
-                  <span className="text-3xl font-display font-black text-brand-red-600">$50</span>
+                  <span className="text-3xl font-display font-black text-brand-navy-950">$50</span>
                   <span className="px-3 py-1 rounded-full text-xs font-bold bg-red-100 text-brand-red-700">
                     Emergency Bed
                   </span>
@@ -336,7 +333,7 @@ export default function HomePage() {
                 <Link
                   to="/donate"
                   state={{ amount: 50 }}
-                  className="w-full py-3 rounded-xl font-display font-black text-xs uppercase tracking-wider text-white bg-brand-red-600 hover:bg-brand-red-700 transition-all flex items-center justify-center gap-2 shadow-md hover:shadow-glow-red"
+                  className="w-full py-3 rounded-xl font-display font-bold text-xs uppercase tracking-wider text-brand-navy-950 bg-slate-100 hover:bg-brand-red-600 hover:text-white transition-all flex items-center justify-center gap-2 group-hover:bg-brand-red-600 group-hover:text-white"
                 >
                   <span>Donate $50</span>
                   <ArrowRight className="w-3.5 h-3.5" />
