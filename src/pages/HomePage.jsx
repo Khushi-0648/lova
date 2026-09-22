@@ -18,7 +18,8 @@ import {
   Sparkles,
   Package,
   ChevronLeft,
-  ChevronRight
+  ChevronRight,
+  Copy
 } from 'lucide-react';
 import ImpactStats from '../components/ImpactStats';
 import DonationWidget from '../components/DonationWidget';
@@ -33,6 +34,26 @@ export default function HomePage() {
   const [monthlyTier, setMonthlyTier] = useState(35);
   const [testimonialIndex, setTestimonialIndex] = useState(0);
   const [touchStartX, setTouchStartX] = useState(null);
+  const [paypalBannerCopied, setPaypalBannerCopied] = useState(false);
+
+  const handlePayPalBannerSubmit = () => {
+    try {
+      if (navigator && navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText('50');
+      } else {
+        const textArea = document.createElement("textarea");
+        textArea.value = '50';
+        document.body.appendChild(textArea);
+        textArea.select();
+        document.execCommand("copy");
+        document.body.removeChild(textArea);
+      }
+    } catch (err) {
+      console.warn('Clipboard copy error:', err);
+    }
+    setPaypalBannerCopied(true);
+    setTimeout(() => setPaypalBannerCopied(false), 8000);
+  };
 
   const nextTestimonial = () => {
     setTestimonialIndex((prev) => (prev + 1) % TESTIMONIALS_DATA.length);
@@ -252,15 +273,40 @@ export default function HomePage() {
                 </div>
               </div>
 
-              <a
-                href="https://www.paypal.com/ncp/payment/F923SVVM97EPU"
+            <div className="flex flex-col items-center sm:items-end gap-2 w-full sm:w-auto">
+              <form
+                action="https://www.paypal.com/ncp/payment/F923SVVM97EPU?amount=50&price=50&currency_code=USD"
+                method="post"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full sm:w-auto justify-center px-6 py-3.5 rounded-xl bg-[#ffc439] hover:bg-[#f4b628] text-slate-900 font-extrabold text-xs uppercase tracking-wider flex items-center gap-2 shadow-sm border border-[#f0b122] transition-all shrink-0"
+                onSubmit={handlePayPalBannerSubmit}
+                className="w-full sm:w-auto"
               >
-                <span>Donate via PayPal</span>
-                <ExternalLink className="w-3.5 h-3.5" />
-              </a>
+                <input type="hidden" name="amount" value="50" />
+                <input type="hidden" name="price" value="50" />
+                <input type="hidden" name="currency_code" value="USD" />
+                <input type="hidden" name="item_name" value="Donation to League of Veterans of America INC" />
+                <button
+                  type="submit"
+                  className="w-full sm:w-auto justify-center px-6 py-3.5 rounded-xl bg-[#ffc439] hover:bg-[#f4b628] text-slate-900 font-extrabold text-xs uppercase tracking-wider flex items-center gap-2 shadow-sm border border-[#f0b122] transition-all shrink-0 active:scale-98"
+                >
+                  <span>Donate via PayPal</span>
+                  <ExternalLink className="w-3.5 h-3.5" />
+                </button>
+              </form>
+
+              {paypalBannerCopied ? (
+                <div className="text-[11px] text-emerald-800 bg-emerald-50 border border-emerald-300 rounded-lg px-2.5 py-1 flex items-center gap-1.5 animate-fadeIn shadow-sm">
+                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
+                  <span><strong>$50 copied!</strong> Paste into PayPal "Donation" box.</span>
+                </div>
+              ) : (
+                <div className="text-[10px] text-slate-500 flex items-center gap-1">
+                  <Copy className="w-3 h-3 text-slate-400" />
+                  <span>Copies $50 to clipboard for fast paste</span>
+                </div>
+              )}
+            </div>
             </div>
           </div>
         </div>

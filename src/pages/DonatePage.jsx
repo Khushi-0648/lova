@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useLocation, useNavigate, Link } from 'react-router-dom';
-import { Heart, ShieldCheck, Lock, CreditCard, Check, AlertCircle, ArrowLeft, ExternalLink, Car } from 'lucide-react';
+import { Heart, ShieldCheck, Lock, CreditCard, Check, AlertCircle, ArrowLeft, ExternalLink, Car, CheckCircle2, Copy } from 'lucide-react';
 import { CAUSES_DATA } from '../data/causesData';
 import confetti from 'canvas-confetti';
 import paypalCardsSvg from '../assets/paypal-cards.svg';
@@ -25,6 +25,7 @@ export default function DonatePage() {
   
   const [paymentMethod, setPaymentMethod] = useState('paypal'); // 'paypal' or 'card'
   const [coverFees, setCoverFees] = useState(true);
+  const [paypalCopiedNotification, setPaypalCopiedNotification] = useState(false);
 
   // Form fields
   const [formData, setFormData] = useState({
@@ -74,6 +75,25 @@ export default function DonatePage() {
     }
   };
 
+  const copyPayPalAmount = () => {
+    try {
+      if (navigator && navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(totalAmount.toString());
+      } else {
+        const textArea = document.createElement("textarea");
+        textArea.value = totalAmount.toString();
+        document.body.appendChild(textArea);
+        textArea.select();
+        document.execCommand("copy");
+        document.body.removeChild(textArea);
+      }
+    } catch (err) {
+      console.warn('Clipboard copy error:', err);
+    }
+    setPaypalCopiedNotification(true);
+    setTimeout(() => setPaypalCopiedNotification(false), 8000);
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     if (baseAmount <= 0) {
@@ -82,8 +102,9 @@ export default function DonatePage() {
     }
 
     if (paymentMethod === 'paypal') {
+      copyPayPalAmount();
       // Direct to official PayPal checkout in new tab
-      window.open('https://www.paypal.com/ncp/payment/F923SVVM97EPU', '_blank');
+      window.open(`https://www.paypal.com/ncp/payment/F923SVVM97EPU?amount=${totalAmount}&price=${totalAmount}&currency_code=USD`, '_blank');
     }
 
     setProcessing(true);
@@ -482,15 +503,47 @@ export default function DonatePage() {
                   </div>
                 </div>
 
-                <a
-                  href="https://www.paypal.com/ncp/payment/F923SVVM97EPU"
+                <form
+                  action={`https://www.paypal.com/ncp/payment/F923SVVM97EPU?amount=${totalAmount}&price=${totalAmount}&currency_code=USD`}
+                  method="post"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-2 w-full max-w-sm py-3 px-6 rounded-xl bg-[#ffc439] hover:bg-[#f4b628] text-slate-900 font-extrabold text-sm shadow-md transition-all border border-[#f0b122]"
+                  onSubmit={copyPayPalAmount}
+                  className="w-full max-w-sm flex flex-col items-center gap-2"
                 >
-                  <span>Open Official PayPal Checkout</span>
-                  <ExternalLink className="w-4 h-4 text-slate-800" />
-                </a>
+                  <input type="hidden" name="amount" value={totalAmount} />
+                  <input type="hidden" name="price" value={totalAmount} />
+                  <input type="hidden" name="currency_code" value="USD" />
+                  <input type="hidden" name="item_name" value={`Donation to League of Veterans of America INC (${frequency})`} />
+                  <input type="hidden" name="no_recurring" value={frequency === 'monthly' ? '0' : '1'} />
+                  <input type="hidden" name="custom" value={formData.tributeName ? `Tribute: ${formData.tributeName}` : 'General Veteran Support'} />
+
+                  <button
+                    type="submit"
+                    className="inline-flex items-center justify-center gap-2 w-full py-3.5 px-6 rounded-xl bg-[#ffc439] hover:bg-[#f4b628] text-slate-900 font-extrabold text-sm shadow-md hover:shadow-lg transition-all border border-[#f0b122] active:scale-98"
+                  >
+                    <span>Proceed to PayPal (${totalAmount})</span>
+                    <ExternalLink className="w-4 h-4 text-slate-800" />
+                  </button>
+
+                  {/* Auto-copy Helper Notification */}
+                  {paypalCopiedNotification ? (
+                    <div className="w-full p-2.5 rounded-xl bg-emerald-50 border border-emerald-300 text-emerald-950 text-xs flex items-start gap-2 shadow-sm animate-fadeIn">
+                      <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
+                      <div>
+                        <strong className="block text-emerald-950 font-bold">${totalAmount} copied to clipboard!</strong>
+                        <p className="text-[11px] text-emerald-800 mt-0.5 leading-relaxed">
+                          Opening PayPal... Simply paste (<kbd className="px-1 py-0.5 bg-emerald-100 border border-emerald-300 rounded font-mono text-[10px]">Ctrl+V</kbd> or tap <strong>Paste</strong>) into the "Donation" box.
+                        </p>
+                      </div>
+                    </div>
+                  ) : (
+                    <div className="flex items-center gap-1.5 text-[11px] text-slate-500">
+                      <Copy className="w-3 h-3 text-slate-400" />
+                      <span>Copies <strong>${totalAmount}</strong> to clipboard for quick paste on PayPal</span>
+                    </div>
+                  )}
+                </form>
               </div>
             ) : (
               <div className="p-4 bg-slate-50 rounded-xl border border-slate-200 space-y-4">
@@ -554,6 +607,20 @@ export default function DonatePage() {
                 ${totalAmount} <span className="text-xs text-slate-400 font-normal">{frequency === 'monthly' ? '/ Month' : 'USD'}</span>
               </span>
             </div>
+
+            {paymentMethod === 'paypal' && (
+              <div className="p-3 rounded-xl bg-brand-navy-900 border border-brand-navy-700 text-xs flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2">
+                <div className="flex items-center gap-2 text-slate-300">
+                  <Copy className="w-4 h-4 text-brand-gold-400 shrink-0" />
+                  <span>Amount to donate: <strong className="text-white font-bold">${totalAmount}</strong> (copies to clipboard automatically)</span>
+                </div>
+                {paypalCopiedNotification && (
+                  <span className="inline-flex items-center gap-1 text-emerald-400 font-bold text-xs bg-emerald-950/80 px-2.5 py-1 rounded-lg border border-emerald-500/40 animate-fadeIn">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" /> Copied to Clipboard!
+                  </span>
+                )}
+              </div>
+            )}
 
             <button
               type="submit"

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Heart, ShieldCheck, Check, ExternalLink } from 'lucide-react';
+import { Heart, ShieldCheck, Check, ExternalLink, CheckCircle2, Copy } from 'lucide-react';
 import paypalCardsSvg from '../assets/paypal-cards.svg';
 import paypalWordmarkSvg from '../assets/paypal-wordmark.svg';
 
@@ -12,6 +12,7 @@ export default function DonationWidget({ defaultCampaign = 'emergency-shelter', 
   const [isCustom, setIsCustom] = useState(false);
   const [isTribute, setIsTribute] = useState(false);
   const [tributeName, setTributeName] = useState('');
+  const [copiedNotification, setCopiedNotification] = useState(false);
 
   const presetAmounts = [25, 50, 100, 250, 500];
 
@@ -53,6 +54,26 @@ export default function DonationWidget({ defaultCampaign = 'emergency-shelter', 
         tributeName
       }
     });
+  };
+
+  const handlePayPalSubmit = () => {
+    const val = (isCustom ? Number(customAmount || 0) : amount) || 100;
+    try {
+      if (navigator && navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(val.toString());
+      } else {
+        const textArea = document.createElement("textarea");
+        textArea.value = val.toString();
+        document.body.appendChild(textArea);
+        textArea.select();
+        document.execCommand("copy");
+        document.body.removeChild(textArea);
+      }
+    } catch (err) {
+      console.warn('Clipboard copy error:', err);
+    }
+    setCopiedNotification(true);
+    setTimeout(() => setCopiedNotification(false), 8000);
   };
 
   const activeAmount = isCustom ? Number(customAmount || 0) : amount;
@@ -200,24 +221,50 @@ export default function DonationWidget({ defaultCampaign = 'emergency-shelter', 
       {/* Official PayPal Instant Donate Button (Direct from lovoa.org) */}
       <div className="mt-5 pt-4 border-t border-slate-100 flex flex-col items-center justify-center gap-2.5">
         <form 
-          action="https://www.paypal.com/ncp/payment/F923SVVM97EPU" 
+          action={`https://www.paypal.com/ncp/payment/F923SVVM97EPU?amount=${activeAmount || 0}&price=${activeAmount || 0}&currency_code=USD`} 
           method="post" 
           target="_blank"
           rel="noopener noreferrer"
+          onSubmit={handlePayPalSubmit}
           className="w-full flex flex-col items-center gap-2"
         >
+          <input type="hidden" name="amount" value={activeAmount || 0} />
+          <input type="hidden" name="price" value={activeAmount || 0} />
+          <input type="hidden" name="item_name" value={`Donation to League of Veterans of America INC (${frequency})`} />
+          <input type="hidden" name="currency_code" value="USD" />
+          <input type="hidden" name="no_recurring" value={frequency === 'monthly' ? '0' : '1'} />
+          <input type="hidden" name="custom" value={isTribute ? `Tribute: ${tributeName}` : 'General Veteran Support'} />
+
           <button
             type="submit"
-            className="w-full py-2.5 px-4 rounded-xl bg-[#ffc439] hover:bg-[#f4b628] text-slate-900 font-bold text-xs sm:text-sm flex items-center justify-center gap-2 shadow-sm transition-all border border-[#f0b122]"
+            className="w-full py-2.5 px-4 rounded-xl bg-[#ffc439] hover:bg-[#f4b628] text-slate-900 font-bold text-xs sm:text-sm flex items-center justify-center gap-2 shadow-sm transition-all border border-[#f0b122] active:scale-98"
           >
-            <span>Donate via Official PayPal</span>
+            <span>Donate ${activeAmount || 0} via Official PayPal</span>
             <ExternalLink className="w-3.5 h-3.5 text-slate-700" />
           </button>
+
+          {/* Auto-copy Helper Notification */}
+          {copiedNotification ? (
+            <div className="w-full p-2.5 rounded-xl bg-emerald-50 border border-emerald-300 text-emerald-950 text-xs flex items-start gap-2 shadow-sm animate-fadeIn">
+              <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
+              <div>
+                <strong className="block text-emerald-950 font-bold">${activeAmount || 0} copied to clipboard!</strong>
+                <p className="text-[11px] text-emerald-800 mt-0.5 leading-relaxed">
+                  Opening PayPal... Simply paste (<kbd className="px-1 py-0.5 bg-emerald-100 border border-emerald-300 rounded font-mono text-[10px]">Ctrl+V</kbd> or tap <strong>Paste</strong>) into the "Donation" box.
+                </p>
+              </div>
+            </div>
+          ) : (
+            <div className="flex items-center gap-1.5 text-[11px] text-slate-500">
+              <Copy className="w-3 h-3 text-slate-400" />
+              <span>Copies <strong>${activeAmount || 0}</strong> to clipboard for quick paste on PayPal</span>
+            </div>
+          )}
           
           <img 
             src={paypalCardsSvg} 
             alt="Debit and Credit Cards accepted" 
-            className="h-5 object-contain"
+            className="h-5 object-contain mt-1"
           />
           
           <div className="flex items-center gap-1.5 text-[11px] text-slate-500">
