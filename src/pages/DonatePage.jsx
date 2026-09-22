@@ -24,7 +24,7 @@ export default function DonatePage() {
   const [selectedCause, setSelectedCause] = useState(initialData.campaignId || 'general-fund');
   
   const [paymentMethod, setPaymentMethod] = useState('paypal'); // 'paypal' or 'card'
-  const [coverFees, setCoverFees] = useState(true);
+  const [coverFees, setCoverFees] = useState(false);
   const [paypalCopiedNotification, setPaypalCopiedNotification] = useState(false);
 
   // Form fields
@@ -49,7 +49,7 @@ export default function DonatePage() {
   const [processing, setProcessing] = useState(false);
 
   const baseAmount = isCustom ? Number(customAmount || 0) : selectedAmount;
-  const processingFee = coverFees ? Math.round((baseAmount * 0.029 + 0.3) * 100) / 100 : 0;
+  const processingFee = 0;
   const totalAmount = Math.round((baseAmount + processingFee) * 100) / 100;
 
   const handleInputChange = (e) => {
