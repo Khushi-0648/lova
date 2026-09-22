@@ -203,6 +203,7 @@ export default function DonationWidget({ defaultCampaign = 'emergency-shelter', 
           action="https://www.paypal.com/ncp/payment/F923SVVM97EPU" 
           method="post" 
           target="_blank"
+          rel="noopener noreferrer"
           className="w-full flex flex-col items-center gap-2"
         >
           <button

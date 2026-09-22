@@ -93,6 +93,8 @@ export default function Footer() {
               <li><Link to="/about" className="hover:text-white transition-colors">About Us</Link></li>
               <li><Link to="/impact" className="hover:text-white transition-colors">Financial Transparency</Link></li>
               <li><Link to="/faq" className="hover:text-white transition-colors">Frequently Asked Questions</Link></li>
+              <li><Link to="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link></li>
+              <li><Link to="/terms" className="hover:text-white transition-colors">Terms of Service</Link></li>
             </ul>
           </div>
 
@@ -168,10 +170,12 @@ export default function Footer() {
         {/* Bottom Legal Copyright */}
         <div className="pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-slate-300">
           <p>© {new Date().getFullYear()} League of Veterans of America INC (lovoa.org). All Rights Reserved.</p>
-          <div className="flex items-center gap-6">
-            <span>Contributions are 100% Tax-Deductible</span>
-            <Link to="/contact" className="hover:text-slate-300">Contact</Link>
-            <Link to="/faq" className="hover:text-slate-300">FAQs</Link>
+          <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6">
+            <span className="text-brand-gold-400 font-semibold">100% Tax-Deductible 501(c)(3)</span>
+            <Link to="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link>
+            <Link to="/terms" className="hover:text-white transition-colors">Terms of Service</Link>
+            <Link to="/contact" className="hover:text-white transition-colors">Contact</Link>
+            <Link to="/faq" className="hover:text-white transition-colors">FAQs</Link>
           </div>
         </div>
       </div>

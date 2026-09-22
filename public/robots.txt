@@ -1,0 +1,6 @@
+# robots.txt for https://lovoa.org
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://lovoa.org/sitemap.xml
