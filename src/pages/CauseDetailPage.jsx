@@ -3,16 +3,11 @@ import { useParams, Link, Navigate } from 'react-router-dom';
 import { CAUSES_DATA } from '../data/causesData';
 import DonationWidget from '../components/DonationWidget';
 import { 
-  Heart, 
   Share2, 
   CheckCircle2, 
   Calendar, 
-  Users, 
-  Clock, 
   ArrowLeft,
-  Check,
-  ShieldCheck,
-  Building
+  Check
 } from 'lucide-react';
 
 export default function CauseDetailPage() {

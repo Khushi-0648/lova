@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { PieChart, ShieldCheck, CheckCircle2, TrendingUp, Users, Home, Heart, FileText, ArrowRight } from 'lucide-react';
+import { ShieldCheck, FileText } from 'lucide-react';
 import ImpactStats from '../components/ImpactStats';
 
 export default function ImpactPage() {
@@ -36,7 +36,7 @@ export default function ImpactPage() {
 
       {/* Where Every Dollar Goes */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="bg-white rounded-3xl p-6 sm:p-12 shadow-xl border border-slate-200">
+        <div className="bg-white rounded-3xl p-4 sm:p-8 lg:p-12 shadow-xl border border-slate-200">
           <div className="max-w-3xl space-y-3 mb-10">
             <span className="text-xs font-bold uppercase tracking-wider text-brand-red-600">
               Fund Distribution
@@ -82,7 +82,7 @@ export default function ImpactPage() {
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           
-          <div className="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm space-y-4">
+          <div className="bg-white p-5 sm:p-8 rounded-2xl border border-slate-200 shadow-sm space-y-4">
             <div className="w-12 h-12 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center">
               <ShieldCheck className="w-6 h-6" />
             </div>
@@ -94,7 +94,7 @@ export default function ImpactPage() {
             </p>
           </div>
 
-          <div className="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm space-y-4">
+          <div className="bg-white p-5 sm:p-8 rounded-2xl border border-slate-200 shadow-sm space-y-4">
             <div className="w-12 h-12 rounded-xl bg-amber-50 text-brand-gold-600 flex items-center justify-center">
               <FileText className="w-6 h-6" />
             </div>
@@ -111,7 +111,7 @@ export default function ImpactPage() {
 
       {/* Action Banner */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="bg-brand-navy-950 rounded-3xl p-8 sm:p-12 text-white text-center space-y-6">
+        <div className="bg-brand-navy-950 rounded-3xl p-5 sm:p-8 lg:p-12 text-white text-center space-y-5 sm:space-y-6">
           <h3 className="text-2xl sm:text-3xl font-display font-black">
             Join the League of Guardians
           </h3>

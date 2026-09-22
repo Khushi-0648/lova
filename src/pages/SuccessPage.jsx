@@ -1,6 +1,6 @@
-import React from 'react';
-import { useLocation, Link, Navigate } from 'react-router-dom';
-import { CheckCircle2, Download, Printer, Share2, Heart, ShieldCheck, ArrowRight, Home } from 'lucide-react';
+import React, { useState } from 'react';
+import { useLocation, Link } from 'react-router-dom';
+import { CheckCircle2, Printer, Home } from 'lucide-react';
 import logoImg from '../assets/logo.png';
 
 export default function SuccessPage() {
@@ -8,8 +8,9 @@ export default function SuccessPage() {
   const data = location.state;
 
   // If accessed directly without donating, use friendly fallback data
+  const [defaultReceiptId] = useState(() => `LV-${Math.floor(100000 + Math.random() * 900000)}`);
   const donation = data || {
-    receiptId: `LV-${Math.floor(100000 + Math.random() * 900000)}`,
+    receiptId: defaultReceiptId,
     amount: 100,
     baseAmount: 100,
     frequency: 'one-time',

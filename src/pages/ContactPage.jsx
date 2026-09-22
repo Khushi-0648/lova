@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Phone, Mail, MapPin, Send, CheckCircle2, Clock, ShieldAlert, Heart } from 'lucide-react';
+import { Phone, Mail, MapPin, Send, CheckCircle2, ShieldAlert } from 'lucide-react';
 
 export default function ContactPage() {
   const [submitted, setSubmitted] = useState(false);
@@ -64,8 +64,8 @@ export default function ContactPage() {
           
           {/* Left: Contact Info Cards (5 cols) */}
           <div className="lg:col-span-5 space-y-6">
-            <div className="bg-white rounded-3xl p-8 border border-slate-200 shadow-md space-y-6">
-              <h2 className="text-2xl font-display font-black text-brand-navy-950">
+            <div className="bg-white rounded-3xl p-5 sm:p-8 border border-slate-200 shadow-md space-y-6">
+              <h2 className="text-xl sm:text-2xl font-display font-black text-brand-navy-950">
                 Official Contact Information
               </h2>
               <p className="text-sm text-slate-600 leading-relaxed">
@@ -127,7 +127,7 @@ export default function ContactPage() {
           </div>
 
           {/* Right: Message Form (7 cols) */}
-          <div className="lg:col-span-7 bg-white rounded-3xl p-8 sm:p-10 border border-slate-200 shadow-xl">
+          <div className="lg:col-span-7 bg-white rounded-3xl p-5 sm:p-8 lg:p-10 border border-slate-200 shadow-xl">
             
             {submitted ? (
               <div className="text-center py-16 space-y-4 animate-fadeIn">

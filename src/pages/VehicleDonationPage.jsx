@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { Car, Truck, Anchor, Bike, ShieldCheck, CheckCircle2, Phone, Calendar, ArrowRight, Check } from 'lucide-react';
+import { Car, Anchor, ShieldCheck, Phone, Calendar, Check } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import carPropertyImg from '../assets/car-property-donation.jpg';
 

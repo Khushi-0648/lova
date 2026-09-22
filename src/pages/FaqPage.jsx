@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { HelpCircle, ChevronDown, Search, Phone, Mail, Car, Heart } from 'lucide-react';
+import { HelpCircle, ChevronDown, Search, Phone, Mail } from 'lucide-react';
 import { FAQ_DATA } from '../data/faqData';
 
 export default function FaqPage() {

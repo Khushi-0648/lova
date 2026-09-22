@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ShieldCheck, Heart, Award, Users, CheckCircle2, ArrowRight, Home, Car } from 'lucide-react';
+import { ShieldCheck, Heart, Award, Users, Home, Car } from 'lucide-react';
 import logoImg from '../assets/logo.png';
 import aboutVeteransImg from '../assets/about-veterans.jpg';
 

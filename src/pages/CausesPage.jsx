@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Heart, Search, Filter, ArrowRight, ShieldCheck } from 'lucide-react';
+import { Heart, Search, ShieldCheck } from 'lucide-react';
 import { CAUSES_DATA } from '../data/causesData';
 
 export default function CausesPage() {

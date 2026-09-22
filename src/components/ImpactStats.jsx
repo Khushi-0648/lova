@@ -1,5 +1,5 @@
 import React from 'react';
-import { Users, Home, HeartHandshake, MapPin, Award, Shield } from 'lucide-react';
+import { Users, Home, HeartHandshake, MapPin } from 'lucide-react';
 
 export default function ImpactStats() {
   const stats = [

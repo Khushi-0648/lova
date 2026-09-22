@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useLocation, useNavigate, Link } from 'react-router-dom';
-import { Heart, ShieldCheck, Lock, CreditCard, Check, AlertCircle, ArrowLeft, ExternalLink, Car, CheckCircle2, Copy } from 'lucide-react';
+import { Heart, ShieldCheck, Lock, CreditCard, Check, ArrowLeft, ExternalLink, Car, CheckCircle2, Copy } from 'lucide-react';
 import { CAUSES_DATA } from '../data/causesData';
 import confetti from 'canvas-confetti';
 import paypalCardsSvg from '../assets/paypal-cards.svg';
@@ -104,7 +104,9 @@ export default function DonatePage() {
     if (paymentMethod === 'paypal') {
       copyPayPalAmount();
       // Direct to official PayPal checkout in new tab
-      window.open(`https://www.paypal.com/ncp/payment/F923SVVM97EPU?amount=${totalAmount}&price=${totalAmount}&currency_code=USD`, '_blank');
+      const paypalUrl = `https://www.paypal.com/ncp/payment/F923SVVM97EPU?amount=${totalAmount}&price=${totalAmount}&currency_code=USD`;
+      window.open(paypalUrl, '_blank');
+      return;
     }
 
     setProcessing(true);
@@ -136,20 +138,20 @@ export default function DonatePage() {
   };
 
   return (
-    <div className="bg-slate-50 py-12 sm:py-16 pb-24">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="bg-slate-50 py-8 sm:py-16 pb-20 sm:pb-24">
+      <div className="max-w-4xl mx-auto px-3.5 sm:px-6 lg:px-8">
         
         {/* Back Link */}
-        <Link to="/" className="inline-flex items-center gap-1.5 text-xs font-bold text-slate-500 hover:text-brand-navy-950 mb-6 transition-colors">
+        <Link to="/" className="inline-flex items-center gap-1.5 text-xs font-bold text-slate-500 hover:text-brand-navy-950 mb-5 sm:mb-6 transition-colors">
           <ArrowLeft className="w-4 h-4" /> Back to Home
         </Link>
 
         {/* Page Title */}
-        <div className="text-center space-y-2 mb-8">
+        <div className="text-center space-y-2 mb-6 sm:mb-8">
           <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-red-100 text-brand-red-700">
             <Heart className="w-3.5 h-3.5 fill-current" /> Stand With Our Heroes
           </span>
-          <h1 className="text-3xl sm:text-4xl font-display font-black text-brand-navy-950">
+          <h1 className="text-2xl sm:text-4xl font-display font-black text-brand-navy-950">
             Make a Donation to lovoa.org
           </h1>
           <p className="text-xs sm:text-sm text-slate-600 max-w-lg mx-auto">
@@ -158,43 +160,43 @@ export default function DonatePage() {
         </div>
 
         {/* Authentic 3-Step Process from lovoa.org */}
-        <div className="bg-white rounded-2xl p-6 shadow-sm border border-slate-200 mb-8">
-          <h3 className="text-sm font-bold uppercase tracking-wider text-brand-gold-600 mb-4 text-center font-display">
+        <div className="bg-white rounded-2xl p-4 sm:p-6 shadow-sm border border-slate-200 mb-6 sm:mb-8">
+          <h3 className="text-xs sm:text-sm font-bold uppercase tracking-wider text-brand-gold-600 mb-3 sm:mb-4 text-center font-display">
             Our donation process is quick & easy...
           </h3>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
-            <div className="space-y-1.5">
-              <div className="w-8 h-8 rounded-full bg-brand-navy-950 text-brand-gold-400 mx-auto flex items-center justify-center font-bold text-sm">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 text-center">
+            <div className="space-y-1 sm:space-y-1.5">
+              <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-brand-navy-950 text-brand-gold-400 mx-auto flex items-center justify-center font-bold text-xs sm:text-sm">
                 1
               </div>
-              <h4 className="font-bold text-sm text-brand-navy-950">Choose Amount</h4>
-              <p className="text-xs text-slate-500">Select a one-time or recurring donation amount that fits your contribution goals.</p>
+              <h4 className="font-bold text-xs sm:text-sm text-brand-navy-950">Choose Amount</h4>
+              <p className="text-[11px] sm:text-xs text-slate-500">Select a one-time or recurring donation amount that fits your goals.</p>
             </div>
 
-            <div className="space-y-1.5">
-              <div className="w-8 h-8 rounded-full bg-brand-navy-950 text-brand-gold-400 mx-auto flex items-center justify-center font-bold text-sm">
+            <div className="space-y-1 sm:space-y-1.5">
+              <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-brand-navy-950 text-brand-gold-400 mx-auto flex items-center justify-center font-bold text-xs sm:text-sm">
                 2
               </div>
-              <h4 className="font-bold text-sm text-brand-navy-950">Fill in Your Details</h4>
-              <p className="text-xs text-slate-500">Enter your payment information securely via our trusted platform, PayPal.</p>
+              <h4 className="font-bold text-xs sm:text-sm text-brand-navy-950">Fill in Your Details</h4>
+              <p className="text-[11px] sm:text-xs text-slate-500">Enter your contact info for official IRS 501(c)(3) tax receipting.</p>
             </div>
 
-            <div className="space-y-1.5">
-              <div className="w-8 h-8 rounded-full bg-brand-navy-950 text-brand-gold-400 mx-auto flex items-center justify-center font-bold text-sm">
+            <div className="space-y-1 sm:space-y-1.5">
+              <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-brand-navy-950 text-brand-gold-400 mx-auto flex items-center justify-center font-bold text-xs sm:text-sm">
                 3
               </div>
-              <h4 className="font-bold text-sm text-brand-navy-950">Complete Your Donation</h4>
-              <p className="text-xs text-slate-500">Click "Donate Now" to instantly support homeless veterans and make a lasting impact.</p>
+              <h4 className="font-bold text-xs sm:text-sm text-brand-navy-950">Complete Your Donation</h4>
+              <p className="text-[11px] sm:text-xs text-slate-500">Click to proceed securely to PayPal or Card to instantly support veterans.</p>
             </div>
           </div>
         </div>
 
-        <form onSubmit={handleSubmit} className="space-y-8">
+        <form onSubmit={handleSubmit} className="space-y-6 sm:space-y-8">
           
           {/* Card 1: Amount & Frequency Selection */}
-          <div className="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-200 space-y-6">
+          <div className="bg-white rounded-2xl p-4 sm:p-6 lg:p-8 shadow-sm border border-slate-200 space-y-5 sm:space-y-6">
             <div className="flex items-center justify-between pb-3 border-b border-slate-100">
-              <h2 className="text-lg font-display font-bold text-brand-navy-950">
+              <h2 className="text-base sm:text-lg font-display font-bold text-brand-navy-950">
                 1. Choose Donation Amount
               </h2>
               <span className="text-xs font-semibold text-emerald-600 flex items-center gap-1">
@@ -294,8 +296,8 @@ export default function DonatePage() {
           </div>
 
           {/* Card 2: Donor Personal Details */}
-          <div className="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-200 space-y-5">
-            <h2 className="text-lg font-display font-bold text-brand-navy-950 pb-3 border-b border-slate-100">
+          <div className="bg-white rounded-2xl p-4 sm:p-6 lg:p-8 shadow-sm border border-slate-200 space-y-4 sm:space-y-5">
+            <h2 className="text-base sm:text-lg font-display font-bold text-brand-navy-950 pb-3 border-b border-slate-100">
               2. Your Contact Information
             </h2>
 
@@ -437,17 +439,17 @@ export default function DonatePage() {
           </div>
 
           {/* Card 3: Payment Method via PayPal / Cards */}
-          <div className="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-200 space-y-6">
-            <h2 className="text-lg font-display font-bold text-brand-navy-950 pb-3 border-b border-slate-100">
+          <div className="bg-white rounded-2xl p-4 sm:p-6 lg:p-8 shadow-sm border border-slate-200 space-y-5 sm:space-y-6">
+            <h2 className="text-base sm:text-lg font-display font-bold text-brand-navy-950 pb-3 border-b border-slate-100">
               3. Payment Information via Trusted Platform PayPal
             </h2>
 
             {/* Payment Method Selector */}
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-2 gap-2.5 sm:gap-4">
               <button
                 type="button"
                 onClick={() => setPaymentMethod('paypal')}
-                className={`p-4 rounded-xl border flex flex-col items-center justify-center gap-1 font-bold text-sm transition-all ${
+                className={`p-3 sm:p-4 rounded-xl border flex flex-col items-center justify-center gap-1 font-bold text-sm transition-all ${
                   paymentMethod === 'paypal'
                     ? 'border-[#003087] bg-blue-50/70 text-blue-900 ring-2 ring-blue-500/30'
                     : 'border-slate-200 hover:border-slate-300 text-slate-700 bg-white'
@@ -477,73 +479,48 @@ export default function DonatePage() {
             </div>
 
             {paymentMethod === 'paypal' ? (
-              <div className="p-6 bg-amber-50/40 border border-amber-200/80 rounded-2xl text-center space-y-4">
+              <div className="p-4 sm:p-6 bg-amber-50/60 border border-amber-200 rounded-xl sm:rounded-2xl text-center space-y-3.5">
                 <div className="space-y-1">
-                  <h4 className="font-bold text-brand-navy-950 text-base">
-                    Donate Securely via Official PayPal Portal
+                  <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-amber-100 text-amber-900 border border-amber-300">
+                    <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
+                    <span>Official Live PayPal Non-Profit Portal</span>
+                  </div>
+                  <h4 className="font-bold text-brand-navy-950 text-base pt-1">
+                    Donate Securely via lovoa.org Verified Gateway
                   </h4>
-                  <p className="text-xs text-slate-600 max-w-md mx-auto">
-                    You can donate using your PayPal balance, bank transfer, or major credit/debit card on the official LOVOA PayPal payment link.
+                  <p className="text-xs text-slate-600 max-w-md mx-auto leading-relaxed">
+                    Your <strong>${totalAmount}</strong> contribution is processed directly through PayPal. You can donate using your PayPal balance, linked bank account, or any major debit/credit card.
                   </p>
                 </div>
 
-                <div className="flex flex-col items-center justify-center gap-2">
+                <div className="flex flex-col items-center justify-center gap-1.5 py-1">
                   <img 
                     src={paypalCardsSvg} 
-                    alt="Accepted Cards" 
-                    className="h-6 object-contain"
+                    alt="Visa, Mastercard, Amex, Discover accepted" 
+                    className="h-5 sm:h-6 object-contain"
                   />
                   <div className="flex items-center gap-1.5 text-xs text-slate-500">
                     <span>Powered by</span>
                     <img 
                       src={paypalWordmarkSvg} 
                       alt="PayPal" 
-                      className="h-4 inline"
+                      className="h-3.5 sm:h-4 inline"
                     />
                   </div>
                 </div>
 
-                <form
-                  action={`https://www.paypal.com/ncp/payment/F923SVVM97EPU?amount=${totalAmount}&price=${totalAmount}&currency_code=USD`}
-                  method="post"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onSubmit={copyPayPalAmount}
-                  className="w-full max-w-sm flex flex-col items-center gap-2"
-                >
-                  <input type="hidden" name="amount" value={totalAmount} />
-                  <input type="hidden" name="price" value={totalAmount} />
-                  <input type="hidden" name="currency_code" value="USD" />
-                  <input type="hidden" name="item_name" value={`Donation to League of Veterans of America INC (${frequency})`} />
-                  <input type="hidden" name="no_recurring" value={frequency === 'monthly' ? '0' : '1'} />
-                  <input type="hidden" name="custom" value={formData.tributeName ? `Tribute: ${formData.tributeName}` : 'General Veteran Support'} />
-
-                  <button
-                    type="submit"
-                    className="inline-flex items-center justify-center gap-2 w-full py-3.5 px-6 rounded-xl bg-[#ffc439] hover:bg-[#f4b628] text-slate-900 font-extrabold text-sm shadow-md hover:shadow-lg transition-all border border-[#f0b122] active:scale-98"
-                  >
-                    <span>Proceed to PayPal (${totalAmount})</span>
-                    <ExternalLink className="w-4 h-4 text-slate-800" />
-                  </button>
-
-                  {/* Auto-copy Helper Notification */}
-                  {paypalCopiedNotification ? (
-                    <div className="w-full p-2.5 rounded-xl bg-emerald-50 border border-emerald-300 text-emerald-950 text-xs flex items-start gap-2 shadow-sm animate-fadeIn">
-                      <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
-                      <div>
-                        <strong className="block text-emerald-950 font-bold">${totalAmount} copied to clipboard!</strong>
-                        <p className="text-[11px] text-emerald-800 mt-0.5 leading-relaxed">
-                          Opening PayPal... Simply paste (<kbd className="px-1 py-0.5 bg-emerald-100 border border-emerald-300 rounded font-mono text-[10px]">Ctrl+V</kbd> or tap <strong>Paste</strong>) into the "Donation" box.
-                        </p>
-                      </div>
-                    </div>
-                  ) : (
-                    <div className="flex items-center gap-1.5 text-[11px] text-slate-500">
-                      <Copy className="w-3 h-3 text-slate-400" />
-                      <span>Copies <strong>${totalAmount}</strong> to clipboard for quick paste on PayPal</span>
-                    </div>
-                  )}
-                </form>
+                {/* Auto-copy Helper Information Badge */}
+                <div className="max-w-md mx-auto p-3 rounded-xl bg-white border border-amber-200 text-xs text-left flex items-start gap-2.5 shadow-sm">
+                  <Copy className="w-4 h-4 text-brand-gold-600 shrink-0 mt-0.5" />
+                  <div>
+                    <strong className="block text-slate-900 font-bold text-xs">
+                      Auto-Copy Amount Helper Active (${totalAmount})
+                    </strong>
+                    <p className="text-[11px] text-slate-600 mt-0.5 leading-relaxed">
+                      Click the yellow <strong>"Proceed to PayPal (${totalAmount})"</strong> button at the bottom of this form to finish. Your <strong>${totalAmount}</strong> will be automatically copied to your clipboard so you can paste it directly into PayPal's Donation field.
+                    </p>
+                  </div>
+                </div>
               </div>
             ) : (
               <div className="p-4 bg-slate-50 rounded-xl border border-slate-200 space-y-4">
@@ -600,8 +577,8 @@ export default function DonatePage() {
           </div>
 
           {/* Total & Final Submission */}
-          <div className="bg-brand-navy-950 text-white rounded-2xl p-6 sm:p-8 shadow-2xl border border-brand-navy-800 space-y-6">
-            <div className="flex justify-between items-center text-lg sm:text-xl font-display font-extrabold pb-4 border-b border-slate-800">
+          <div className="bg-brand-navy-950 text-white rounded-2xl p-4 sm:p-6 lg:p-8 shadow-2xl border border-brand-navy-800 space-y-5 sm:space-y-6">
+            <div className="flex justify-between items-center text-base sm:text-xl font-display font-extrabold pb-3 sm:pb-4 border-b border-slate-800">
               <span>Total Contribution:</span>
               <span className="text-2xl sm:text-3xl text-brand-gold-400 font-black">
                 ${totalAmount} <span className="text-xs text-slate-400 font-normal">{frequency === 'monthly' ? '/ Month' : 'USD'}</span>
@@ -622,14 +599,36 @@ export default function DonatePage() {
               </div>
             )}
 
-            <button
-              type="submit"
-              disabled={processing}
-              className="w-full py-4 px-8 rounded-xl font-display font-black text-base uppercase tracking-wider text-white bg-gradient-to-r from-brand-red-600 to-brand-red-700 hover:from-brand-red-500 hover:to-brand-red-600 shadow-xl hover:shadow-glow-red transition-all flex items-center justify-center gap-2 transform active:scale-98 disabled:opacity-50"
-            >
-              <Heart className="w-5 h-5 fill-current text-white" />
-              <span>{processing ? 'Connecting...' : `Click to Donate $${totalAmount} Now`}</span>
-            </button>
+            {paymentMethod === 'paypal' ? (
+              <button
+                type="submit"
+                className="w-full py-4 px-6 sm:px-8 rounded-xl font-display font-black text-sm sm:text-base uppercase tracking-wider text-slate-900 bg-[#ffc439] hover:bg-[#f4b628] shadow-xl hover:shadow-glow-yellow transition-all flex items-center justify-center gap-2 transform active:scale-98 border border-[#f0b122]"
+              >
+                <span>Proceed to PayPal (${totalAmount})</span>
+                <ExternalLink className="w-4 h-4 text-slate-900" />
+              </button>
+            ) : (
+              <button
+                type="submit"
+                disabled={processing}
+                className="w-full py-4 px-8 rounded-xl font-display font-black text-base uppercase tracking-wider text-white bg-gradient-to-r from-brand-red-600 to-brand-red-700 hover:from-brand-red-500 hover:to-brand-red-600 shadow-xl hover:shadow-glow-red transition-all flex items-center justify-center gap-2 transform active:scale-98 disabled:opacity-50"
+              >
+                <Heart className="w-5 h-5 fill-current text-white" />
+                <span>{processing ? 'Connecting...' : `Click to Donate $${totalAmount} Now`}</span>
+              </button>
+            )}
+
+            {paymentMethod === 'paypal' && paypalCopiedNotification && (
+              <div className="p-3 rounded-xl bg-emerald-950/70 border border-emerald-500/50 text-emerald-200 text-xs text-center animate-fadeIn space-y-1">
+                <p className="font-bold text-white">Opening official PayPal portal in new tab...</p>
+                <p className="text-[11px] text-emerald-200">
+                  Your <strong>${totalAmount}</strong> is copied to clipboard. Paste (<kbd className="px-1 py-0.5 bg-emerald-900 rounded font-mono text-[10px]">Ctrl+V</kbd> or tap <strong>Paste</strong>) into the PayPal Donation box.
+                </p>
+                <p className="text-[11px] text-emerald-300 pt-0.5">
+                  Pop-up blocked? <a href={`https://www.paypal.com/ncp/payment/F923SVVM97EPU?amount=${totalAmount}&price=${totalAmount}&currency_code=USD`} target="_blank" rel="noopener noreferrer" className="underline font-bold text-white hover:text-brand-gold-300">Click here to open PayPal directly</a>.
+                </p>
+              </div>
+            )}
 
             <div className="flex flex-wrap items-center justify-center gap-4 text-xs text-slate-400">
               <span className="flex items-center gap-1.5">
