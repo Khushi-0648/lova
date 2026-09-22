@@ -45,7 +45,7 @@ export default function App() {
             <Route path="/terms" element={<TermsPage />} />
             <Route path="/terms-of-service" element={<TermsPage />} />
             
-            {/* 404 Route */}
+            <Route path="/contact" element={<ContactPage />} />
             <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </main>
