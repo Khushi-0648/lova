@@ -509,18 +509,7 @@ export default function DonatePage() {
                   </div>
                 </div>
 
-                {/* Auto-copy Helper Information Badge */}
-                <div className="max-w-md mx-auto p-3 rounded-xl bg-white border border-amber-200 text-xs text-left flex items-start gap-2.5 shadow-sm">
-                  <Copy className="w-4 h-4 text-brand-gold-600 shrink-0 mt-0.5" />
-                  <div>
-                    <strong className="block text-slate-900 font-bold text-xs">
-                      Auto-Copy Amount Helper Active (${totalAmount})
-                    </strong>
-                    <p className="text-[11px] text-slate-600 mt-0.5 leading-relaxed">
-                      Click the yellow <strong>"Proceed to PayPal (${totalAmount})"</strong> button at the bottom of this form to finish. Your <strong>${totalAmount}</strong> will be automatically copied to your clipboard so you can paste it directly into PayPal's Donation field.
-                    </p>
-                  </div>
-                </div>
+
               </div>
             ) : (
               <div className="p-4 bg-slate-50 rounded-xl border border-slate-200 space-y-4">

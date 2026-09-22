@@ -116,7 +116,7 @@ export default function ImpactPage() {
             Join the League of Guardians
           </h3>
           <p className="text-sm text-slate-300 max-w-xl mx-auto">
-            Your recurring monthly gift of $25, $50, or $100 creates an unbreakable foundation for homeless veterans across the country.
+            Your recurring monthly gift of $25 or $50 creates an unbreakable foundation for homeless veterans across the country.
           </p>
           <div className="flex justify-center gap-4">
             <Link

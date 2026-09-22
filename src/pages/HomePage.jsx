@@ -4,7 +4,7 @@ import {
   Heart, 
   Car, 
   ShieldCheck, 
-  CheckCircle2, 
+  CheckCircle2, Copy, 
   Star, 
   ExternalLink, 
   ArrowRight, 
@@ -18,8 +18,7 @@ import {
   Sparkles,
   Package,
   ChevronLeft,
-  ChevronRight,
-  Copy
+  ChevronRight
 } from 'lucide-react';
 import ImpactStats from '../components/ImpactStats';
 import DonationWidget from '../components/DonationWidget';
@@ -387,34 +386,36 @@ export default function HomePage() {
               </div>
             </div>
 
-            {/* Tier $100 */}
-            <div className="bg-white rounded-2xl p-6 border border-slate-200 shadow-md hover:shadow-xl hover:border-brand-red-500/30 transition-all flex flex-col justify-between group">
-              <div className="space-y-4">
-                <div className="flex items-center justify-between">
-                  <span className="text-3xl font-display font-black text-brand-navy-950">$100</span>
-                  <span className="px-3 py-1 rounded-full text-xs font-bold bg-blue-100 text-blue-800">
-                    Mental Health
-                  </span>
-                </div>
-                <h3 className="font-display font-bold text-lg text-brand-navy-950">
-                  PTSD Trauma Counseling
-                </h3>
-                <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                  Funds a clinical one-on-one session with a licensed trauma specialist dedicated to combat veteran rehabilitation.
-                </p>
-              </div>
-              <div className="pt-6 mt-6 border-t border-slate-100">
-                <Link
-                  to="/donate"
-                  state={{ amount: 100 }}
-                  className="w-full py-3 rounded-xl font-display font-bold text-xs uppercase tracking-wider text-brand-navy-950 bg-slate-100 hover:bg-brand-red-600 hover:text-white transition-all flex items-center justify-center gap-2 group-hover:bg-brand-red-600 group-hover:text-white"
-                >
-                  <span>Donate $100</span>
-                  <ArrowRight className="w-3.5 h-3.5" />
-                </Link>
-              </div>
-            </div>
 
+
+
+{/* Tier $100 */}
+<div className="bg-white rounded-2xl p-6 border border-slate-200 shadow-md hover:shadow-xl hover:border-brand-red-500/30 transition-all flex flex-col justify-between group">
+  <div className="space-y-4">
+    <div className="flex items-center justify-between">
+      <span className="text-3xl font-display font-black text-brand-navy-950">$100</span>
+      <span className="px-3 py-1 rounded-full text-xs font-bold bg-purple-100 text-purple-800">
+        Veteran Support
+      </span>
+    </div>
+    <h3 className="font-display font-bold text-lg text-brand-navy-950">
+      Comprehensive Care
+    </h3>
+    <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+      Funds comprehensive medical and mental‑health services for veterans in crisis.
+    </p>
+  </div>
+  <div className="pt-6 mt-6 border-t border-slate-100">
+    <Link
+      to="/donate"
+      state={{ amount: 100 }}
+      className="w-full py-3 rounded-xl font-display font-bold text-xs uppercase tracking-wider text-brand-navy-950 bg-slate-100 hover:bg-brand-red-600 hover:text-white transition-all flex items-center justify-center gap-2 group-hover:bg-brand-red-600 group-hover:text-white"
+    >
+      <span>Donate $100</span>
+      <ArrowRight className="w-3.5 h-3.5" />
+    </Link>
+  </div>
+</div>
             {/* Tier $250 */}
             <div className="bg-white rounded-2xl p-6 border border-slate-200 shadow-md hover:shadow-xl hover:border-brand-red-500/30 transition-all flex flex-col justify-between group">
               <div className="space-y-4">
