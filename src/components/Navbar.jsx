@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { Phone, Mail, Heart, Menu, X, ShieldCheck, ChevronRight } from 'lucide-react';
 import logoImg from '../assets/logo.png';
+import ImageWithFallback from './ImageWithFallback';
 
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -56,15 +57,7 @@ export default function Navbar() {
           
           {/* Brand Logo & Name */}
           <Link to="/" className="flex items-center gap-2 sm:gap-3 group min-w-0 pr-2">
-            <img 
-              src={logoImg} 
-              alt="League of Veterans of America" 
-              className="h-10 sm:h-14 w-auto object-contain transition-transform group-hover:scale-105 shrink-0"
-              onError={(e) => {
-                e.target.onerror = null;
-                e.target.src = "https://lovoa.org/wp-content/uploads/2025/01/logo-01-01.png";
-              }}
-            />
+            <ImageWithFallback src={logoImg} fallback="https://lovoa.org/wp-content/uploads/2025/01/logo-01-01.png" alt="League of Veterans of America" className="h-10 sm:h-14 w-auto object-contain transition-transform group-hover:scale-105 shrink-0" onError={(e) => { e.target.onerror = null; e.target.src = "https://lovoa.org/wp-content/uploads/2025/01/logo-01-01.png"; }} />
             <div className="flex flex-col min-w-0">
               <span className="font-display font-black text-sm sm:text-xl tracking-tight text-brand-navy-900 group-hover:text-brand-red-600 transition-colors leading-tight uppercase truncate">
                 League of Veterans

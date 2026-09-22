@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Phone, Mail, MapPin, Heart, ShieldCheck, ArrowRight, CheckCircle, Car } from 'lucide-react';
 import logoImg from '../assets/logo.png';
+import { Phone, Mail, MapPin, Heart, ShieldCheck, ArrowRight, CheckCircle, Car } from 'lucide-react';
+import ImageWithFallback from './ImageWithFallback';
+
 
 export default function Footer() {
   const [emailInput, setEmailInput] = useState('');
@@ -54,15 +56,8 @@ export default function Footer() {
           {/* Col 1: Brand Info (4 cols) */}
           <div className="lg:col-span-4 space-y-4">
             <Link to="/" className="flex items-center gap-3">
-              <img 
-                src={logoImg} 
-                alt="LOVOA Logo" 
-                className="h-16 w-auto object-contain brightness-110"
-                onError={(e) => {
-                  e.target.onerror = null;
-                  e.target.src = "https://lovoa.org/wp-content/uploads/2025/01/logo-01-01.png";
-                }}
-              />
+              <ImageWithFallback src={logoImg} fallback="https://lovoa.org/wp-content/uploads/2025/01/logo-01-01.png" alt="LOVOA Logo" className="h-16 w-auto object-contain brightness-110" />
+
               <div>
                 <span className="font-display font-black text-lg text-white block uppercase tracking-tight">
                   League of Veterans
@@ -106,9 +101,8 @@ export default function Footer() {
             <ul className="space-y-2 text-sm text-slate-400">
               <li><Link to="/donate" className="hover:text-brand-red-400 transition-colors flex items-center gap-1.5"><Heart className="w-3.5 h-3.5 text-brand-red-500 fill-current" /> Monetary Donations</Link></li>
               <li><Link to="/vehicle-donation" className="hover:text-brand-gold-400 transition-colors flex items-center gap-1.5"><Car className="w-3.5 h-3.5 text-brand-gold-500" /> Car, Truck & RV Donations</Link></li>
-              <li><Link to="/causes/emergency-shelter" className="hover:text-white transition-colors">Emergency Shelter Network</Link></li>
-              <li><Link to="/causes/smart-homes-adaptation" className="hover:text-white transition-colors">Smart Home Adaptation</Link></li>
-              <li><Link to="/causes/wounded-warriors-ptsd" className="hover:text-white transition-colors">Wounded Warrior PTSD Relief</Link></li>
+              <li><Link to="/smart-homes-adaptation" className="hover:text-white transition-colors">Smart Home Adaptation</Link></li>
+              <li><Link to="/wounded-warriors-ptsd" className="hover:text-white transition-colors">Wounded Warrior PTSD Relief</Link></li>
             </ul>
           </div>
 

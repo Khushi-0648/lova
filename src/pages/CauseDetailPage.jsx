@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useParams, Link, Navigate } from 'react-router-dom';
+import { useParams, Link, Navigate, useLocation } from 'react-router-dom';
 import { CAUSES_DATA } from '../data/causesData';
 import DonationWidget from '../components/DonationWidget';
 import { 
@@ -12,9 +12,11 @@ import {
 
 export default function CauseDetailPage() {
   const { id } = useParams();
+  const location = useLocation();
+  const slug = id || location.pathname.replace(/^\//, '');
   const [copied, setCopied] = useState(false);
 
-  const cause = CAUSES_DATA.find((c) => c.slug === id || c.id === id);
+  const cause = CAUSES_DATA.find((c) => c.slug === slug || c.id === slug);
 
   if (!cause) {
     return <Navigate to="/causes" replace />;
@@ -34,14 +36,12 @@ export default function CauseDetailPage() {
       {/* Breadcrumbs & Navigation */}
       <div className="bg-slate-100 border-b border-slate-200 py-3">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between text-xs font-semibold text-slate-500">
-          <div className="flex items-center gap-2">
-            <Link to="/" className="hover:text-brand-navy-950">Home</Link>
-            <span>/</span>
-            <Link to="/causes" className="hover:text-brand-navy-950">Causes</Link>
-            <span>/</span>
-            <span className="text-slate-800 line-clamp-1">{cause.title}</span>
-          </div>
-          <Link to="/causes" className="flex items-center gap-1 text-brand-navy-900 hover:text-brand-red-600">
+            <div className="flex items-center gap-2">
+              <Link to="/" className="hover:text-brand-navy-950">Home</Link>
+              <span>/</span>
+              <span className="text-slate-800 line-clamp-1">{cause.title}</span>
+            </div>
+          <Link to="/" className="flex items-center gap-1 text-brand-navy-900 hover:text-brand-red-600">
             <ArrowLeft className="w-3.5 h-3.5" /> Back to all causes
           </Link>
         </div>

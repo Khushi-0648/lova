@@ -189,7 +189,7 @@ export default function HomePage() {
 
             {/* Right Column: Clean Donation Box */}
             <div className="lg:col-span-5">
-              <DonationWidget defaultCampaign="emergency-shelter" />
+              <DonationWidget defaultCampaign="smart-homes-adaptation" />
             </div>
 
           </div>

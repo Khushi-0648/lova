@@ -27,15 +27,16 @@ export default function App() {
         <main className="flex-grow">
           <Routes>
             <Route path="/" element={<HomePage />} />
-            <Route path="/causes" element={<CausesPage />} />
+
             <Route path="/programs" element={<CausesPage />} />
-            <Route path="/causes/:id" element={<CauseDetailPage />} />
+
             <Route path="/donate" element={<DonatePage />} />
             <Route path="/vehicle-donation" element={<VehicleDonationPage />} />
             <Route path="/about" element={<AboutPage />} />
             <Route path="/impact" element={<ImpactPage />} />
             <Route path="/faq" element={<FaqPage />} />
-            <Route path="/contact" element={<ContactPage />} />
+            <Route path="/smart-homes-adaptation" element={<CauseDetailPage />} />
+            <Route path="/wounded-warriors-ptsd" element={<CauseDetailPage />} />
             <Route path="/donation-success" element={<SuccessPage />} />
             
             {/* Legal & Policy Pages */}

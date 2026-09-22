@@ -13,7 +13,6 @@ import {
 export default function NotFoundPage() {
   const quickLinks = [
     { title: 'Home Page', path: '/', desc: 'Return to our primary mission hub' },
-    { title: 'Our Causes & Programs', path: '/causes', desc: 'Emergency shelters, wounded warrior care & smart homes' },
     { title: 'Donate a Vehicle', path: '/vehicle-donation', desc: 'Complimentary 50-state towing & maximum tax deduction' },
     { title: 'Financial Transparency', path: '/impact', desc: 'Audited financials & how every dollar is allocated' },
     { title: 'About Our Heritage', path: '/about', desc: 'Founded by and for American military service veterans' },

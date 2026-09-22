@@ -547,22 +547,6 @@ export default function DonatePage() {
                 </div>
               </div>
             )}
-
-            {/* Optional Processing Fee Cover */}
-            <div className="pt-2 border-t border-slate-100">
-              <label className="flex items-start gap-2.5 cursor-pointer text-xs text-slate-700">
-                <input
-                  type="checkbox"
-                  checked={coverFees}
-                  onChange={(e) => setCoverFees(e.target.checked)}
-                  className="rounded text-brand-red-600 focus:ring-brand-red-500 w-4 h-4 mt-0.5"
-                />
-                <div>
-                  <span className="font-bold">Add ${processingFee} to cover processing costs</span>
-                  <p className="text-slate-500 text-[11px]">This ensures 100% of your ${baseAmount} contribution goes directly to veteran shelter and care.</p>
-                </div>
-              </label>
-            </div>
           </div>
 
           {/* Total & Final Submission */}

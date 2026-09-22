@@ -1,4 +1,4 @@
-import emergencyShelterImg from '../assets/causes/emergency-shelter.jpg';
+
 import smartHomesImg from '../assets/causes/smart-homes.jpg';
 import ptsdCounselingImg from '../assets/causes/ptsd-counseling.jpg';
 import foodHygieneImg from '../assets/causes/food-hygiene.jpg';
@@ -6,30 +6,6 @@ import jobTrainingImg from '../assets/causes/job-training.jpg';
 import vehicleProgramImg from '../assets/causes/vehicle-program.jpg';
 
 export const CAUSES_DATA = [
-  {
-    id: 'emergency-shelter',
-    slug: 'emergency-shelter',
-    title: 'Emergency Housing & Veteran Shelter Network',
-    category: 'Housing',
-    tagline: 'Providing immediate shelter, warmth, and safe transition housing for homeless heroes.',
-    description: 'Over 35,000 veterans experience homelessness on any given night across the United States. League of Veterans of America provides safe, fully equipped accommodation facilities, warm meals, and transitional housing to help veterans get off the streets and onto a path of permanent independence.',
-    goal: 120000,
-    raised: 89450,
-    donorsCount: 482,
-    daysLeft: 18,
-    image: emergencyShelterImg,
-    featured: true,
-    impactPoints: [
-      'Provides 45 days of immediate stable shelter and warm bedding',
-      'Nutritious meal program serving breakfast, lunch, and dinner',
-      'Case managers assisting with permanent affordable housing placement',
-      'Assistance with VA benefits and healthcare enrollment'
-    ],
-    updates: [
-      { date: 'September 15, 2026', title: 'New Florida Veteran Wing Opened', content: 'With your generous support, we opened 12 additional transitional rooms in South Florida!' },
-      { date: 'August 28, 2026', title: 'Emergency Winter Supplies Distributed', content: 'Distributed over 300 emergency cold-weather kits to veterans in need.' }
-    ]
-  },
   {
     id: 'smart-homes-adaptation',
     slug: 'smart-homes-adaptation',
